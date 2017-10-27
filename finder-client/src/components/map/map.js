@@ -31,6 +31,12 @@ class Map extends Component {
         zoom: zoom
       })
       this.map = new maps.Map(node, mapConfig);
+      
+      new google.maps.KmlLayer("https://www.google.com/maps/d/u/0/kml?mid=1Lk09pmnjKNyqJJVR3WOGYktiCrY&forcekml=1", {
+        suppressInfoWindows: true,
+        preserveViewport: false,
+        map: this.map
+      });
     }
   }
 
