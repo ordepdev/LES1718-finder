@@ -1,0 +1,19 @@
+{
+  "name": "finder-server",
+  "version": "1.0.0",
+  "description": "Finder RESTful API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ordepdev",
+  "license": "MIT",
+  "dependencies": {
+    "hapi": "^16.6.2",
+    "hapi-and-healthy": "^5.0.0",
+    "mongoose": "^4.12.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
