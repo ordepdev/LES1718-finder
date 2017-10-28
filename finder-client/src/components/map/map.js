@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { DEFAULT_LATITUDE, DEFAULT_LONGITUDE } from '../../constants/configuration';
 
 class Map extends Component {
 
@@ -23,9 +24,7 @@ class Map extends Component {
       const node = ReactDOM.findDOMNode(mapRef);
 
       let zoom = 14;
-      let lat = 41.178541;
-      let lng = -8.596266;
-      const center = new maps.LatLng(lat, lng);
+      const center = new maps.LatLng(DEFAULT_LATITUDE, DEFAULT_LONGITUDE);
       const mapConfig = Object.assign({}, {
         center: center,
         zoom: zoom
