@@ -19,11 +19,11 @@ module.exports = [
     method: 'GET',
     path: '/rooms/{name}',
     handler(request, reply) {
-      Room.find({'name': request.params.name}, '', function(err, room) {
+      Room.findOne({'name': request.params.name}, '', function(err, room) {
         if (err) {
           throw err;
         }
-        if (!room.length) {
+        if (room === null) {
           return reply({
             "message": "Room [{room}] was not found."
               .replace("{room}", request.params.name)
