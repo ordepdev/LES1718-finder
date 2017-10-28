@@ -22,5 +22,5 @@ script:
   - npm test
 after_script:
   - docker-compose kill
-after_success: cd finder-server && npm run coverage
+after_success: npm run coverage
 
