@@ -4,7 +4,7 @@ const Hapi = require('hapi');
 const port = process.env.PORT || 3000;
 const server = new Hapi.Server();
 const mongodb = require('./mongodb');
-const rooms= require('./routes/Rooms');
+const rooms= require('./routes/rooms');
 
 server.connection({ port: port, host: 'localhost' });
 server.start((err) => {
