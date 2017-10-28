@@ -1,26 +1,28 @@
 language: node_js
 sudo: required
 services:
-  - docker
+- docker
 cache:
-   directories:
-     - node_modules
+  directories:
+  - node_modules
 node_js:
-  - 4
+- 4
 before_install:
-  - npm install -g node-gyp
+- npm install -g node-gyp
 before_script:
-  - cd finder-server
-  - npm install
-  - npm install -g standard
-  - cd ..
-  - docker-compose build
-  - docker-compose up -d
-  - sleep 3
+- cd finder-server
+- npm install
+- npm install -g standard
+- cd ..
+- docker-compose build
+- docker-compose up -d
+- sleep 3
 script:
-  - cd finder-server
-  - npm test
+- cd finder-server
+- npm test
 after_script:
-  - docker-compose kill
+- docker-compose kill
 after_success: npm run coverage
-
+env:
+  global:
+    secure: BhyyD84DjfUd50/WRb/aFVhiy5cxI6qmrWeiyrItD0A5dURB6WiDvK60w30nt9TXjV1EfvkVAAoYWRucNu3CH2d+TcL9838aZmtS4MfNbmAafR9k5AA/iSOtPmf2fOrhj5HdZCCOtfQqYVi0YxWU5xA6A3fTKn/05n/WxMF9jyfCEGdClo2TfvPIj0O4Vd9AH1RvyTTPs4aVF3LZzIkjaCpTDmvcWt5uhitdmJAfNEOI50KumuFzr5bXqPidHFFVWj7MoyXJyCHqq5uIDn9gCP0vbu7CLBtnhfjWkhWQrzKy67Y2CcjklAj3prDVANe5HYCge0C874Xh6tu4PRjfcx+t2JrhGe08qhQqf5f6LNRpoIiRSgwb2gWLNJiW019ZW/7GhEEeyYE/kRqqQKxeIAhrdycH0ZlCApP6WXh7Byr+KVFbQZxHo/TdUo4044NWgJZ0/iBCLxzDrT6FNftI5yD0CvgwSO318Ndh1Bg2CFWj4X69Nq/sCHsF1zGQxnClOc1puULjX7a5brsS1a39usG+OvSqXMp7nJ0Bk5rYgV6VNoVLP494jSF5LQt7nAWn8HybQnM07lEMpwJ7iOSvUkml0eyEG7JhDAU8g4AZWsGhI7hLMHIyYk0MoA+INp/iTtDxGHwjEeLvZxXFubwhYnAis4Hq8TLzWjuLLF/Hmak=

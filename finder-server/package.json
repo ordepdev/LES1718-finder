@@ -4,14 +4,16 @@
   "description": "Finder RESTful API",
   "main": "server.js",
   "scripts": {
-    "test": "nyc --reporter=html --reporter=text node_modules/.bin/mocha",
-    "coverage": "codecov --token=08a77099-2dab-4d9b-b248-3451d7f4dc2e"
+    "test": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec",
+    "coverage": "codecov --token=08a77099-2dab-4d9b-b248-3451d7f4dc2e && cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage"
   },
   "author": "ordepdev",
   "license": "MIT",
   "dependencies": {
+    "codacy-coverage": "^2.0.3",
     "hapi": "^16.6.2",
     "hapi-and-healthy": "^5.0.0",
+    "mocha-lcov-reporter": "^1.3.0",
     "mongoose": "^4.12.4"
   },
   "devDependencies": {
