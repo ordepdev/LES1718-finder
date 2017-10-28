@@ -10,12 +10,15 @@ node_js:
 before_install:
   - npm install -g node-gyp
 before_script:
+  - cd finder-server
   - npm install
   - npm install -g standard
+  - cd ..
   - docker-compose build
   - docker-compose up -d
   - sleep 3
 script:
+  - cd finder-server
   - npm test
 after_script:
   - docker-compose kill
