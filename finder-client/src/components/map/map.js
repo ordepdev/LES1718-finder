@@ -30,7 +30,7 @@ class Map extends Component {
         zoom: zoom
       })
       this.map = new maps.Map(node, mapConfig);
-      
+
       new google.maps.KmlLayer("https://www.google.com/maps/d/u/0/kml?mid=1Lk09pmnjKNyqJJVR3WOGYktiCrY&forcekml=1", {
         suppressInfoWindows: true,
         preserveViewport: false,
@@ -40,13 +40,8 @@ class Map extends Component {
   }
 
   render() {
-    const style = {
-      width: '600px',
-      height: '600px'
-    }
-
     return (
-      <div ref='map' style={style}>
+      <div ref='map' className="map-container">
         Loading map...
       </div>
     );

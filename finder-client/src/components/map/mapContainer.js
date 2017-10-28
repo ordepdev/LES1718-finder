@@ -4,15 +4,8 @@ import GoogleApiComponent from '../../scripts/GoogleApiComponent';
 
 export class MapContainer extends React.Component {
     render() {
-        const style = {
-            width: '600px',
-            height: '600px'
-        }
-
         return (
-            <div style={style}>
-                <Map google={this.props.google} />
-            </div>
+            <Map google={this.props.google} />
         );
     }
 }
