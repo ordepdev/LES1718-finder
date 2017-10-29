@@ -16,25 +16,20 @@ class Map extends Component {
 
   loadMap() {
     if (this.props && this.props.google) {
-      // google is available
       const { google } = this.props;
-      const maps = google.maps;
+      const node = ReactDOM.findDOMNode(this.refs.map);
 
-      const mapRef = this.refs.map;
-      const node = ReactDOM.findDOMNode(mapRef);
-
-      let zoom = 14;
-      const center = new maps.LatLng(DEFAULT_LATITUDE, DEFAULT_LONGITUDE);
+      const center = new google.maps.LatLng(DEFAULT_LATITUDE, DEFAULT_LONGITUDE);
       const mapConfig = Object.assign({}, {
-        center: center,
-        zoom: zoom
-      })
-      this.map = new maps.Map(node, mapConfig);
+        center: center
+      });
+
+      const map = new google.maps.Map(node, mapConfig);
 
       new google.maps.KmlLayer("https://www.google.com/maps/d/u/0/kml?mid=1Lk09pmnjKNyqJJVR3WOGYktiCrY&forcekml=1", {
-        suppressInfoWindows: true,
+        suppressInfoWindows: false,
         preserveViewport: false,
-        map: this.map
+        map: map
       });
     }
   }
