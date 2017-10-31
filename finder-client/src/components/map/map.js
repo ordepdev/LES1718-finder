@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { DEFAULT_LATITUDE, DEFAULT_LONGITUDE } from '../../constants/configuration';
+import { DEFAULT_LATITUDE, DEFAULT_LONGITUDE, DEFAULT_ZOOM_LEVEL } from '../../constants/configuration';
 
 class Map extends Component {
 
@@ -14,22 +14,48 @@ class Map extends Component {
     }
   }
 
-  loadMap() {
+  /**
+   * Loads the map object with all the necessary information.
+   * @param {*} initialLat Initial latitude.
+   * @param {*} initialLng Initial longitude.
+   */
+  loadMap(initialLat = undefined, initialLng = undefined) {
     if (this.props && this.props.google) {
       const { google } = this.props;
       const node = ReactDOM.findDOMNode(this.refs.map);
 
-      const center = new google.maps.LatLng(DEFAULT_LATITUDE, DEFAULT_LONGITUDE);
+      let lat, lng;
+
+      if (initialLat === undefined || initialLng === undefined) {
+
+        //We need to verify if the user gave permission to obtain his location.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition((position) => {
+            this.loadMap(position.coords.latitude, position.coords.longitude);
+          }, () => {
+            this.loadMap(DEFAULT_LATITUDE, DEFAULT_LONGITUDE);
+          });
+        } else {
+          lat = DEFAULT_LATITUDE;
+          lng = DEFAULT_LONGITUDE;
+        }
+      } else {
+        lat = initialLat;
+        lng = initialLng;
+      }
+
+      const center = new google.maps.LatLng(lat, lng);
       const mapConfig = Object.assign({}, {
-        center: center
+        center: center,
+        zoom: DEFAULT_ZOOM_LEVEL
       });
 
-      const map = new google.maps.Map(node, mapConfig);
+      this.map = new google.maps.Map(node, mapConfig);
 
       new google.maps.KmlLayer("https://www.google.com/maps/d/u/0/kml?mid=1Lk09pmnjKNyqJJVR3WOGYktiCrY&forcekml=1", {
         suppressInfoWindows: false,
-        preserveViewport: false,
-        map: map
+        preserveViewport: true,
+        map: this.map
       });
     }
   }
