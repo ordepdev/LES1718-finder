@@ -19,7 +19,7 @@ class Map extends Component {
    * @param {*} initialLat Initial latitude.
    * @param {*} initialLng Initial longitude.
    */
-  loadMap(initialLat = undefined, initialLng = undefined) {
+  loadMap(initialLat = undefined, initialLng = undefined, showMarker = false) {
     if (this.props && this.props.google) {
       const { google } = this.props;
       const node = ReactDOM.findDOMNode(this.refs.map);
@@ -31,7 +31,7 @@ class Map extends Component {
         //We need to verify if the user gave permission to obtain his location.
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition((position) => {
-            this.loadMap(position.coords.latitude, position.coords.longitude);
+            this.loadMap(position.coords.latitude, position.coords.longitude, true);
           }, () => {
             this.loadMap(DEFAULT_LATITUDE, DEFAULT_LONGITUDE);
           });
@@ -51,6 +51,13 @@ class Map extends Component {
       });
 
       this.map = new google.maps.Map(node, mapConfig);
+
+      if (showMarker) {
+        new google.maps.Marker({
+          position: {lat: initialLat, lng: initialLng},
+          map: this.map
+        });
+      }
 
       new google.maps.KmlLayer("https://www.google.com/maps/d/u/0/kml?mid=1Lk09pmnjKNyqJJVR3WOGYktiCrY&forcekml=1", {
         suppressInfoWindows: false,
