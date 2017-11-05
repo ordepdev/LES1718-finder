@@ -49,16 +49,26 @@ class Search extends Component {
 
   render() {
     return (
-      <div>
+      <div id="searchBar">
+      <TextField
+        // name="searchInput"
+        // value={this.state.searchInput}
+        hintText="Actual localization"
+        // errorText={this.state.errorText}
+        // onChange={this.handleInputChange}
+        className="searchInput"
+
+      />
         <TextField
           name="searchInput"
           value={this.state.searchInput}
           hintText="Search for a POI"
           errorText={this.state.errorText}
           onChange={this.handleInputChange}
+          className="searchInput"
         />
-        <RaisedButton label="Primary" primary={true} onClick={this.handleSubmit} />
-    
+        <RaisedButton label="GO" primary={true} className="searchButton" onClick={this.handleSubmit} />
+
         {
           this.state.searchResult !== undefined &&
           <SearchResult data={this.state.searchResult}/>

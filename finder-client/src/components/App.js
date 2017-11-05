@@ -12,8 +12,8 @@ class App extends Component {
       <MuiThemeProvider>
         <div>
           <AppBar title="Feup Finder" />
-          <MapContainer />
           <Search />
+          <MapContainer />
         </div>
       </MuiThemeProvider>
     );

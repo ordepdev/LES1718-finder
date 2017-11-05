@@ -3,10 +3,13 @@
     &-wrapper {
         height: 100%;
         width: 100%;
+        margin-top: 5vh;
     }
 
     &-container {
-        height: 600px;
-        width: 1200px;
+        // height: 600px;
+        height: 75vh;
+        // width: 1200px;
+        width: 100vw;
     }
 }
