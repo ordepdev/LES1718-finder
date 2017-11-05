@@ -53,7 +53,7 @@ class Search extends Component {
       <TextField
         // name="searchInput"
         // value={this.state.searchInput}
-        hintText="Actual localization"
+        hintText="current location"
         // errorText={this.state.errorText}
         // onChange={this.handleInputChange}
         className="searchInput"
