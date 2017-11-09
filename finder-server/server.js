@@ -1,10 +1,11 @@
 'use strict';
 
 const Hapi = require('hapi');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 const server = new Hapi.Server();
 const mongodb = require('./mongodb');
-const rooms= require('./routes/rooms');
+const rooms = require('./routes/rooms');
+const navigation = require("./routes/navigation"); 
 
 server.connection({ port: port, host: 'localhost' });
 server.start((err) => {
@@ -14,6 +15,7 @@ server.start((err) => {
 });
 
 server.route(rooms);
+server.route(navigation);
 
 server.route({
   method: 'GET',
