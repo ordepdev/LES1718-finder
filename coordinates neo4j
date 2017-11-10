@@ -1,0 +1,536 @@
+CREATE
+(B012:CLASSROOM {code : "B012", coordinate: "41.1773283,-8.5956712"}),
+(B011:CLASSROOM {code : "B011", coordinate: "41.1773811,-8.5956089"}),
+(B010:CLASSROOM {code : "B010", coordinate: "41.1773933,-8.5956022"}),
+(B048:CLASSROOM {code : "B048", coordinate: "41.1774157,-8.5956317"}),
+(B013:CLASSROOM {code : "B013", coordinate: "41.1775081,-8.5955844"}),
+(B045:CLASSROOM {code : "B045", coordinate: "41.1774924,-8.5955546"}),
+(B009:CLASSROOM {code : "B009", coordinate: "41.1775108,-8.5953574"}),
+(B008:CLASSROOM {code : "B008", coordinate: "41.1775018,-8.5953195"}),
+(B043:CLASSROOM {code : "B043", coordinate: "41.1774573,-8.595175"}),
+(B007:CLASSROOM {code : "B007", coordinate: "41.1773907,-8.5951868"}),
+(B004:CLASSROOM {code : "B004", coordinate: "41.1773233,-8.595183"}),
+(B005:CLASSROOM {code : "B005", coordinate: "41.1773072,-8.5951917"}),
+(B042:CLASSROOM {code : "B042", coordinate: "41.1773039,-8.5952253"}),
+(B006:CLASSROOM {code : "B006", coordinate: "41.177206,-8.5952756"}),
+(B001:CLASSROOM {code : "B001", coordinate: "41.1777352,-8.5957654"}),
+(B002:CLASSROOM {code : "B002", coordinate: "41.1777162,-8.5956886"}),
+(B003:CLASSROOM {code : "B003", coordinate: "41.1776746,-8.5956427"}),
+(B034:CLASSROOM {code : "B034", coordinate: "41.177637,-8.5973013"}),
+(B032:CLASSROOM {code : "B032", coordinate: "41.1777097,-8.597247"}),
+(B033:CLASSROOM {code : "B033", coordinate: "41.1776946,-8.5972564"}),
+(B067:CLASSROOM {code : "B067", coordinate: "41.1778182,-8.5972182 "}),
+(B035:CLASSROOM {code : "B035", coordinate: "41.1778247,-8.5972463"}),
+(B031:CLASSROOM {code : "B031", coordinate: "41.177852,-8.5970204"}),
+(B030:CLASSROOM {code : "B030", coordinate: "41.1778475,-8.5969801"}),
+(B028:CLASSROOM {code : "B028", coordinate: "41.1775663,-8.5968883"}),
+(B026:CLASSROOM {code : "B026", coordinate: "41.1776431,-8.5968306"}),
+(B027:CLASSROOM {code : "B027", coordinate: "41.1776249,-8.5968339"}),
+(B029:CLASSROOM {code : "B029", coordinate: "41.177749,-8.5968299"}),
+(B060:CLASSROOM {code : "B060", coordinate: "41.1777501,-8.5967964"}),
+(B066:CLASSROOM {code : "B066", coordinate: "41.1778646,-8.5971699"}),
+(B065:CLASSROOM {code : "B065", coordinate: "41.1778091,-8.5968427"}),
+(B071:CLASSROOM {code : "B071", coordinate: "41.1777329,-8.5972732"}),
+(B064:CLASSROOM {code : "B064", coordinate: "41.1776587,-8.5968554"}),
+(B087:CLASSROOM {code : "B087", coordinate: "41.1777829,-8.59685"}),
+(B025:CLASSROOM {code : "B025", coordinate: "41.1777783,-8.5966033"}),
+(B024:CLASSROOM {code : "B024", coordinate: "41.1777728,-8.5965671"}),
+(B022:CLASSROOM {code : "B022", coordinate: "41.1774937,-8.5964665"}),
+(B021:CLASSROOM {code : "B021", coordinate: "41.1775527,-8.5964182"}),
+(B020:CLASSROOM {code : "B020", coordinate: "41.1775679,-8.5964148"}),
+(B059:CLASSROOM {code : "B059", coordinate: "41.1775865,-8.5964397"}),
+(B055:CLASSROOM {code : "B055", coordinate: "41.1776708,-8.5963793"}),
+(B086:CLASSROOM {code : "B086", coordinate: "41.177693,-8.5963444"}),
+(B054:CLASSROOM {code : "B054", coordinate: "41.1777243,-8.5963391"}),
+(B019:CLASSROOM {code : "B019", coordinate: "41.1777107,-8.5961835"}),
+(B018:CLASSROOM {code : "B018", coordinate: "41.1777036,-8.5961473"}),
+(B053:CLASSROOM {code : "B053", coordinate: "41.1776648,-8.5960045"}),
+(B085:CLASSROOM {code : "B085", coordinate: "41.177635,-8.5960219"}),
+(B017:CLASSROOM {code : "B017", coordinate: "41.1776052,-8.5959978"}),
+(B014:CLASSROOM {code : "B014", coordinate: "41.1775361,-8.5959857"}),
+(B015:CLASSROOM {code : "B015", coordinate: "41.1775244,-8.5959904"}),
+(B016:CLASSROOM {code : "B016", coordinate: "41.1774235,-8.5960514"}),
+(B052:CLASSROOM {code : "B052", coordinate: "41.1775133,-8.5960239"}),
+(B050:CLASSROOM {code : "B050", coordinate: "41.1776456,-8.5959495"}),
+(B049:CLASSROOM {code : "B049", coordinate: "41.1776587,-8.5959455"}),
+(B040:CLASSROOM {code : "B040", coordinate: "41.1774361,-8.5951334"}),
+(BES1:CLASSROOM {code : "BES1", coordinate: "41.1774795,-8.5951053"}),
+(B041:CLASSROOM {code : "B041", coordinate: "41.1771747,-8.5951743"}),
+(B046:CLASSROOM {code : "B046", coordinate: "41.1772993,-8.5955753"}),
+(B047:CLASSROOM {code : "B047", coordinate: "41.1773155,-8.595635"}),
+(B051:CLASSROOM {code : "B051", coordinate: "41.1773988,-8.5959435"}),
+(B056:CLASSROOM {code : "B056", coordinate: "41.1774699,-8.5963625"}),
+(B057:CLASSROOM {code : "B057", coordinate: "41.17748,-8.5964276"}),
+(B058:CLASSROOM {code : "B058", coordinate: "41.1775022,-8.5965469"}),
+(B061:CLASSROOM {code : "B061", coordinate: "41.1775451,-8.596779"}),
+(B062:CLASSROOM {code : "B062", coordinate: "41.1775578,:-8.5968413"}),
+(B063:CLASSROOM {code : "B063", coordinate: "41.1775779,-8.5969613"}),
+(B068:CLASSROOM {code : "B068", coordinate: "41.1776143,-8.5972021"}),
+(B069:CLASSROOM {code : "B069", coordinate: "41.1776274,-8.5972584"}),
+(B070:CLASSROOM {code : "B070", coordinate: "41.1776501,-8.5973798"},
+(BES1:ENTRANCE {code : "BES1", coordinate: "41.1774775,-8.595112"}),
+(BES2:ENTRANCE {code : "BES2", coordinate: "41.1776976,-8.5958207"}),
+(BES3::ENTRANCE {code : "BES3", coordinate: "41.1778616,-8.5967769"}),
+(E4:STAIRS {code : "E4", coordinate: "41.1777117,-8.5963364"}),
+(E1:STAIRS {code : "E1", coordinate: "41.1774397,-8.5951938"}),
+(E2:STAIRS {code : "E2", coordinate: "41.1775265,-8.5955049"}),
+(WC1:BATHROOM {code : "WC1", coordinate: "41.1775477,-8.5955612"}),
+(E3:STAIRS {code : "E3", coordinate: "41.1776526,-8.5960085"}),
+(WC2:BATHROOM {code : "WC2", coordinate: "41.1777208,-8.5963988"}),
+(WC3:BATHROOM {code : "WC3", coordinate: "41.1777849,-8.5967877"}),
+(E5:STAIRS {code : "E5", coordinate: "41.1778005,-8.5968474"}),
+(E6:STAIRS {code : "E6", coordinate: "41.1778495,-8.5971706"}),
+(C001:CORRIDOR {code : "C001", coordinate: "41.1774849, -8.5951304"}),
+(C002:CORRIDOR {code : "C002", coordinate: "41.1774578, -8.5951439"}),
+(C003:CORRIDOR {code : "C003", coordinate: "41.177442, -8.595152"}),
+(C004:CORRIDOR {code : "C004", coordinate: "41.177426, -8.595158"}),
+(C005:CORRIDOR {code : "C005", coordinate: "41.177387, -8.595171"}),
+(C006:CORRIDOR {code : "C006", coordinate: "41.177329, -8.595198"}),
+(C007:CORRIDOR {code : "C007", coordinate: "41.177313, -8.595209"}),
+(C008:CORRIDOR {code : "C008", coordinate: "41.177216, -8.595255"}),
+(C009:CORRIDOR {code : "C009", coordinate: "41.177538, -8.595325"}),
+(C010:CORRIDOR {code : "C010", coordinate: "41.177513, -8.595340"}),
+(C011:CORRIDOR {code : "C011", coordinate: "41.177590, -8.595519"}),
+(C012:CORRIDOR {code : "C012", coordinate: "41.177550, -8.595544"}),
+(C013:CORRIDOR {code : "C013", coordinate: "41.1775034, -8.5955689"}),
+(C014:CORRIDOR {code : "C014", coordinate: "41.1774187, -8.5956145"}),
+(C015:CORRIDOR {code : "C015", coordinate: "41.1774042, -8.5956183"}),
+(C016:CORRIDOR {code : "C016", coordinate: "41.1773864, -8.5956239”}),
+(C017:CORRIDOR {code : "C017", coordinate: "41.1773293, -8.5956541"}),
+(C018:CORRIDOR {code : "C018", coordinate: "41.1776548, -8.5957455"}),
+(C019:CORRIDOR {code : "C019", coordinate: "41.1776265, -8.5957602"}),
+(C020:CORRIDOR {code : "C020", coordinate: "41.1776932, -8.5959581”}),
+(C021:CORRIDOR {code : "C021, coordinate: "41.1776669, -8.5959715”}),
+(C022:CORRIDOR {code : "C022", coordinate: "41.1776427, -8.5959728”}),
+(C023:CORRIDOR {code : "C023", coordinate: "41.1775963, -8.5959862”}),
+(C024:CORRIDOR {code : "C024", coordinate: "41.1775387, -8.5959976”}),
+(C025:CORRIDOR {code : "C025", coordinate: "41.1775226, -8.5960037”}),
+(C026:CORRIDOR {code : "C026", coordinate: "41.1774222, -8.5960318”}),
+(C027:CORRIDOR {code : "C020", coordinate: "41.1777301, -8.5961604”}),
+(C028:CORRIDOR {code : "C028", coordinate: "41.1777008, -8.5961691”}),
+(C029:CORRIDOR {code : "C029", coordinate: "41.1777648, -8.5963679”}),
+(C030:CORRIDOR {code : "C030", coordinate: "41.1777371, -8.5963780”}),
+(C031:CORRIDOR {code : "C031", coordinate: "41.1777191, -8.5963817”}),
+(C032:CORRIDOR {code : "C032", coordinate: "41.1776762, -8.5963957”}),
+(C033:CORRIDOR {code : "C033", coordinate: "41.1775955, -8.5964266”}),
+(C034:CORRIDOR {code : "C034", coordinate: "41.1775758, -8.5964266”}),
+(C035:CORRIDOR {code : "C035", coordinate: "41.1775546, -8.5964346”}),
+(C036:CORRIDOR {code : "C036", coordinate: "41.1774976, -8.5964527”}),
+(C037:CORRIDOR {code : "C037", coordinate: "41.1778038, -8.5965763”}),
+(C038:CORRIDOR {code : "C038", coordinate: "41.1777689, -8.5965877”}),
+(C039:CORRIDOR {code : "C039", coordinate: "41.1778387, -8.5967904”}),
+(C040:CORRIDOR {code : "C040", coordinate: "41.1778126, -8.5967954”}),
+(C041:CORRIDOR {code : "C041", coordinate: "41.1777904, -8.5968001”}),
+(C042:CORRIDOR {code : "C042", coordinate: "41.1777533, -8.5968113”}),
+(C043:CORRIDOR {code : "C043", coordinate: "41.1776634, -8.5968421”}),
+(C044:CORRIDOR {code : "C044", coordinate: "41.1776412, -8.5968435”}),
+(C045:CORRIDOR {code : "C045", coordinate: "41.1776296, -8.5968502”}),
+(C046:CORRIDOR {code : "C046", coordinate: "41.1775716, -8.5968716”}),
+(C047:CORRIDOR {code : "C047", coordinate: "41.1778729, -8.5969920”}),
+(C048:CORRIDOR {code : "C048", coordinate: "41.1778426, -8.5970007”}),
+(C049:CORRIDOR {code : "C049", coordinate: "41.1779127, -8.5972028”}),
+(C050:CORRIDOR {code : "C050", coordinate: "41.1778859, -8.5972128”}),
+(C051:CORRIDOR {code : "C051", coordinate: "41.1778644, -8.5972177”}),
+(C052:CORRIDOR {code : "C052", coordinate: "41.1778210, -8.5972285”}),
+(C053:CORRIDOR {code : "C053", coordinate: "41.1777402, -8.5972580”}),
+(C054:CORRIDOR {code : "C054", coordinate: "41.1777170, -8.5972573”}),
+(C055:CORRIDOR {code : "C055", coordinate: "41.1776978, -8.5972680”}),
+(C056:CORRIDOR {code : "C056", coordinate: "41.1776394, -8.5972874”}), 
+
+
+
+MATCH (BES1 {code:'BES1'}), (C001 {code:'C001'})
+CREATE (BES1)-[:TRAVELS{distance:1}]->(C001)
+
+MATCH (C001 {code:'C001'}), (C002 {code:'C002'})
+CREATE (C001)-[:TRAVELS{distance:3}]->(C002)
+
+MATCH (C002 {code:'C002'}), (B043 {code:'B043'})
+CREATE (C002)-[:TRAVELS{distance:2}]->(B043)
+
+MATCH (C002 {code:'C002'}), (C003 {code:'C003'})
+CREATE (C002)-[:TRAVELS{distance:0}]->(C003)
+
+MATCH (C003 {code:'C003'}), (B040 {code:'B040'})
+CREATE (C003)-[:TRAVELS{distance:1}]->(B040)
+
+MATCH (C003 {code:'C003'}), (E1 {code:'E1'})
+CREATE (C003)-[:TRAVELS{distance:3}]->(E1)
+
+MATCH (C003 {code:'C003'}), (C004 {code:'C004'})
+CREATE (C003)-[:TRAVELS{distance:1}]->(C004)
+
+MATCH (C004 {code:'C004'}), (C005 {code:'C005'})
+CREATE (C004)-[:TRAVELS{distance:4}]->(C005)
+
+MATCH (C005 {code:'C005'}), (B007{code:'B007'})
+CREATE (C005)-[:TRAVELS{distance:1}]->(B007)
+
+MATCH (C005 {code:'C005'}), (C006 {code:'C006'})
+CREATE (C005)-[:TRAVELS{distance:6}]->(C006)
+
+MATCH (C006 {code:'C006'}), (B004 {code:'B004'})
+CREATE (C006)-[:TRAVELS{distance:1}]->(B004)
+
+MATCH (C006 {code:'C006'}), (C007 {code:'C007'})
+CREATE (C006)-[:TRAVELS{distance:2}]->(C007)
+
+MATCH (C007 {code:'C007'}), (B042 {code:'B042'})
+CREATE (C007)-[:TRAVELS{distance:1}]->(B042)
+
+MATCH (C007 {code:'C007'}), (B005 {code:'B005'})
+CREATE (C007)-[:TRAVELS{distance:1}]->(B005)
+
+MATCH (C007 {code:'C007'}), (C008 {code:'C008'})
+CREATE (C007)-[:TRAVELS{distance:11}]->(C008)
+
+MATCH (C008 {code:'C008'}), (B006 {code:'B006'})
+CREATE (C008)-[:TRAVELS{distance:2}]->(B006)
+
+MATCH (C008 {code:'C008'}), (B041 {code:'B041'})
+CREATE (C008)-[:TRAVELS{distance:8}]->(B041)
+
+MATCH (C002 {code:'C002'}), (C009 {code:'C009'})
+CREATE (C002)-[:TRAVELS{distance:17}]->(C009)
+
+MATCH (C009 {code:'C009'}), (C010 {code:'C010'})
+CREATE (C009)-[:TRAVELS{distance:3}]->(C010)
+
+MATCH (C010 {code:'C010'}), (B008 {code:'B008'})
+CREATE (C010)-[:TRAVELS{distance:2}]->(B008)
+
+MATCH (C010 {code:'C010'}), (B009 {code:'B009'})
+CREATE (C010)-[:TRAVELS{distance:2}]->(B009)
+
+MATCH (C010 {code:'C010'}), (C011 {code:'C011'})
+CREATE (C010)-[:TRAVELS{distance:17}]->(C011)
+
+MATCH (C011 {code:'C011'}), (C012 {code:'C012'})
+CREATE (C011)-[:TRAVELS{distance:4}]->(C012)
+
+MATCH (C012 {code:'C012'}), (WC1 {code:'WC1'})
+CREATE (C012)-[:TRAVELS{distance:1}]->(WC1)
+
+MATCH (C012 {code:'C012'}), (E2 {code:'E2'})
+CREATE (C012)-[:TRAVELS{distance:2}]->(E2)
+
+MATCH (C012 {code:'C012'}), (C013 {code:'C013'})
+CREATE (C012)-[:TRAVELS{distance:5}]->(C013)
+
+MATCH (C013 {code:'C013'}), (B045 {code:'B045'})
+CREATE (C013)-[:TRAVELS{distance:1}]->(B045)
+
+MATCH (C013 {code:'C013'}), (B013 {code:'B013'})
+CREATE (C013)-[:TRAVELS{distance:1}]->(B013)
+
+MATCH (C013 {code:'C013'}), (C014 {code:'C014'})
+CREATE (C013)-[:TRAVELS{distance:10}]->(C014)
+
+MATCH (C014 {code:'C014'}), (B048 {code:'B048'})
+CREATE (C014)-[:TRAVELS{distance:1}]->(B048)
+
+MATCH (C014 {code:'C014'}), (C015 {code:'C015'})
+CREATE (C014)-[:TRAVELS{distance:1}]->(C015)
+
+MATCH (C015 {code:'C015'}), (B010 {code:'B010'})
+CREATE (C015)-[:TRAVELS{distance:1}]->(B010)
+
+MATCH (C015 {code:'C015'}), (C016 {code:'C016'})
+CREATE (C015)-[:TRAVELS{distance:2}]->(C016)
+
+MATCH (C016 {code:'C016'}), (B011 {code:'B011'})
+CREATE (C016)-[:TRAVELS{distance:1}]->(B011)
+
+MATCH (C016 {code:'C016'}), (C017 {code:'C017'})
+CREATE (C016)-[:TRAVELS{distance:6}]->(C017)
+
+MATCH  (C017 {code:'C017'}), (B012 {code:'B012'})
+CREATE (C017)-[:TRAVELS{distance:1}]->(B012)
+
+MATCH  (C017 {code:'C017'}), (B046 {code:'B046'})
+CREATE (C017)-[:TRAVELS{distance:1}]->(B04)
+
+MATCH  (C017 {code:'C017'}), (B047 {code:'B047'})
+CREATE (C017)-[:TRAVELS{distance:1}]->(B047)
+
+MATCH (C011 {code:'C011'}), (C018 {code:'C018'})
+CREATE (C011)-[:TRAVELS{distance:20}]->(C018)
+
+MATCH (C018 {code:'C018'}), (B001 {code:'B001'})
+CREATE (C018)-[:TRAVELS{distance:9}]->(B001)
+
+MATCH (C018 {code:'C018'}), (B002 {code:'B002'})
+CREATE (C018)-[:TRAVELS{distance:9}]->(B002)
+
+MATCH (C018 {code:'C018'}), (B003 {code:'B003'})
+CREATE (C018)-[:TRAVELS{distance:9}]->(B003)
+
+MATCH (C018 {code:'C018'}), (C020 {code:'C020'})
+CREATE (C018)-[:TRAVELS{distance:18}]->(C020)
+
+MATCH (C020 {code:'C020'}), (C021 {code:'C021'})
+CREATE (C020)-[:TRAVELS{distance:3}]->(C021)
+
+MATCH (C021 {code:'C021'}), (B049 {code:'B049'})
+CREATE (C021)-[:TRAVELS{distance:1}]->(B049)
+
+MATCH ((C021 {code:'C021'}), (B053 {code:'B053'})
+CREATE (C021)-[:TRAVELS{distance:1}]->(B053)
+
+MATCH (C021 {code:'C021'}), (C022 {code:'C022'})
+CREATE (C021)-[:TRAVELS{distance:2}]->(C022)
+
+MATCH (C022 {code:'C022'}), (E3 {code:'E3'})
+CREATE (C022)-[:TRAVELS{distance:1}]->(E3)
+
+MATCH (C022 {code:'C022'}), (B050 {code:'B050'})
+CREATE (C022)-[:TRAVELS{distance:1}]->(B050)
+
+MATCH (C022 {code:'C022'}), (C023 {code:'C023'})
+CREATE (C022)-[:TRAVELS{distance:5}]->(C023)
+
+MATCH (C023 {code:'C023'}), (B017 {code:'B017'})
+CREATE (C023)-[:TRAVELS{distance:1}]->(B017)
+
+MATCH (C023 {code:'C023'}), (C024 {code:'C024'})
+CREATE (C023)-[:TRAVELS{distance:6}]->(C024)
+
+MATCH (C024 {code:'C024'}), (B014 {code:'B014'})
+CREATE (C024)-[:TRAVELS{distance:1}]->(B014)
+
+MATCH (C024 {code:'C024'}), (C025 {code:'C025'})
+CREATE (C024)-[:TRAVELS{distance:1}]->(C025)
+
+MATCH (C025 {code:'C025'}), (B015 {code:'B015'})
+CREATE (C025)-[:TRAVELS{distance:1}]->(B015)
+
+MATCH (C025 {code:'C025'}), (B052 {code:'B052'})
+CREATE (C025)-[:TRAVELS{distance:1}]->(B052)
+
+MATCH (C025 {code:'C025'}), (C026 {code:'C026'})
+CREATE (C025)-[:TRAVELS{distance:11}]->(C026)
+
+MATCH (C026 {code:'C026'}), (B016 {code:'B016'})
+CREATE (C026)-[:TRAVELS{distance:1}]->(B016)
+
+MATCH (C026 {code:'C026'}), (B051 {code:'B051'})
+CREATE (C026)-[:TRAVELS{distance:1}]->(B051)
+
+MATCH (C026 {code:'C026'}), (C027 {code:'C027'})
+CREATE (C026)-[:TRAVELS{distance:17}]->(C027)
+
+MATCH (C027 {code:'C027'}), (C028 {code:'C028'})
+CREATE (C027)-[:TRAVELS{distance:3}]->(C028)
+
+MATCH (C0228{code:'C028'}), (B018 {code:'B018'})
+CREATE (C028)-[:TRAVELS{distance:1}]->(B018)
+
+MATCH (C028 {code:'C028'}), (B019 {code:'B019'})
+CREATE (C028)-[:TRAVELS{distance:1}]->(B019)
+
+MATCH (C027 {code:'C027'}), (C029 {code:'C029'})
+CREATE (C027)-[:TRAVELS{distance:17}]->(C029)
+
+MATCH (C029 {code:'C029'}), (C030 {code:'C030'})
+CREATE (C029)-[:TRAVELS{distance:3}]->(C030)
+
+MATCH (C030 {code:'C030'}), (B054 {code:'B054'})
+CREATE (C030)-[:TRAVELS{distance:1}]->(B054)
+
+MATCH (C030 {code:'C030'}), (C031 {code:'C031'})
+CREATE (C030)-[:TRAVELS{distance:2}]->(C031)
+
+MATCH (C031 {code:'C031'}), (E4 {code:'E4'})
+CREATE (C031)-[:TRAVELS{distance:1}]->(E4)
+
+MATCH (C031 {code:'C031'}), (WC2 {code:'WC2'})
+CREATE (C031)-[:TRAVELS{distance:1}]->(WC2)
+
+MATCH (C031 {code:'C031'}), (B086 {code:'B086'})
+CREATE (C031)-[:TRAVELS{distance:1}]->(B086)
+
+MATCH (C031 {code:'C031'}), (C032 {code:'C032'})
+CREATE (C031)-[:TRAVELS{distance:4}]->(C032)
+
+MATCH (C032 {code:'C032'}), (B055 {code:'B055'})
+CREATE (C032)-[:TRAVELS{distance:1}]->(B055)
+
+MATCH (C032 {code:'C032'}), (B023 {code:'B023'})
+CREATE (C032)-[:TRAVELS{distance:1}]->(B023)
+
+MATCH (C032 {code:'C032'}), (C033 {code:'C033'})
+CREATE (C032)-[:TRAVELS{distance:9}]->(C033)
+
+MATCH (C033 {code:'C033'}), (B059 {code:'B059'})
+CREATE (C033)-[:TRAVELS{distance:1}]->(B059)
+
+MATCH (C033 {code:'C033'}), (C034 {code:'C034'})
+CREATE (C033)-[:TRAVELS{distance:2}]->(C034)
+
+MATCH (C034 {code:'C034'}), (B020 {code:'B020'})
+CREATE (C034)-[:TRAVELS{distance:1}]->(B020)
+
+MATCH (C034 {code:'C034'}), (C035 {code:'C035'})
+CREATE (C034)-[:TRAVELS{distance:2}]->(C035)
+
+MATCH (C035 {code:'C035'}), (B021 {code:'B021'})
+CREATE (C035)-[:TRAVELS{distance:1}]->(B021)
+
+MATCH (C035 {code:'C035'}), (C036 {code:'C036'})
+CREATE (C035)-[:TRAVELS{distance:6}]->(C036)
+
+MATCH (C036 {code:'C036'}), (B056 {code:'B056'})
+CREATE (C036)-[:TRAVELS{distance:1}]->(B056)
+
+MATCH (C036 {code:'C036'}), (B057 {code:'B057'})
+CREATE (C036)-[:TRAVELS{distance:1}]->(B057)
+
+MATCH (C036 {code:'C036'}), (B058 {code:'B058'})
+CREATE (C036)-[:TRAVELS{distance:1}]->(B058)
+
+MATCH (C036 {code:'C036'}), (B022 {code:'B022'})
+CREATE (C036)-[:TRAVELS{distance:1}]->(B022)
+
+MATCH (C029 {code:'C029'}), (C037 {code:'C037'})
+CREATE (C029)-[:TRAVELS{distance:18}]->(C037)
+
+MATCH (C037 {code:'C037'}), (C038 {code:'C038'})
+CREATE (C037)-[:TRAVELS{distance:3}]->(C038)
+
+MATCH (C037 {code:'C037'}), (B024 {code:'B024'})
+CREATE (C037)-[:TRAVELS{distance:1}]->(B024)
+
+MATCH (C037 {code:'C037'}), (B025 {code:'B025'})
+CREATE (C037)-[:TRAVELS{distance:1}]->(B025)
+
+MATCH (C037 {code:'C037'}), (C039 {code:'C039'})
+CREATE (C037)-[:TRAVELS{distance:18}]->(C039)
+
+MATCH (C039 {code:'C039'}), (C040 {code:'C040'})
+CREATE (C039)-[:TRAVELS{distance:2}]->(C040)
+
+MATCH (C040 {code:'C040'}), (B065 {code:'B065'})
+CREATE (C040)-[:TRAVELS{distance:1}]->(B065)
+
+MATCH (C040 {code:'C040'}), (C041 {code:'C041'})
+CREATE (C040)-[:TRAVELS{distance:2}]->(C041)
+
+MATCH (C041 {code:'C041'}), (WC3 {code:'WC3'})
+CREATE (C041)-[:TRAVELS{distance:1}]->(WC3)
+
+MATCH (C041 {code:'C041'}), (E5 {code:'E5'})
+CREATE (C041)-[:TRAVELS{distance:1}]->(E5)
+
+MATCH (C041 {code:'C041'}), (B087 {code:'B087'})
+CREATE (C041)-[:TRAVELS{distance:1}]->(B087)
+
+MATCH (C041 {code:'C041'}), (C042 {code:'C042'})
+CREATE (C041)-[:TRAVELS{distance:4}]->(C042)
+
+MATCH (C042 {code:'C042'}), (B060 {code:'B060'})
+CREATE (C042)-[:TRAVELS{distance:1}]->(B060)
+
+MATCH (C042 {code:'C042'}), (B029 {code:'B029'})
+CREATE (C042)-[:TRAVELS{distance:1}]->(B029)
+
+MATCH (C042 {code:'C042'}), (C043 {code:'C043'})
+CREATE (C042)-[:TRAVELS{distance:10}]->(C043)
+
+MATCH (C043 {code:'C043'}), (B064 {code:'B064'})
+CREATE (C043)-[:TRAVELS{distance:1}]->(B064)
+
+MATCH (C043 {code:'C043'}), (C044 {code:'C044'})
+CREATE (C043)-[:TRAVELS{distance:2}]->(C044)
+
+MATCH (C044 {code:'C044'}), (B026 {code:'B026'})
+CREATE (C044)-[:TRAVELS{distance:1}]->(B026)
+
+MATCH (C044 {code:'C044'}), (C045 {code:'C045'})
+CREATE (C044)-[:TRAVELS{distance:1}]->(C045)
+
+MATCH (C045 {code:'C045'}), (B027 {code:'B027'})
+CREATE (C045)-[:TRAVELS{distance:1}]->(B027)
+
+MATCH (C045 {code:'C045'}), (C046 {code:'C046'})
+CREATE (C045)-[:TRAVELS{distance:6}]->(C046)
+
+MATCH (C046 {code:'C046'}), (B061 {code:'B061'})
+CREATE (C046)-[:TRAVELS{distance:1}]->(B061)
+
+MATCH (C046 {code:'C046'}), (B062 {code:'B062'})
+CREATE (C046)-[:TRAVELS{distance:1}]->(B062)
+
+MATCH (C046 {code:'C046'}), (B063 {code:'B063'})
+CREATE (C046)-[:TRAVELS{distance:1}]->(B063)
+
+MATCH (C046 {code:'C046'}), (B028 {code:'B028'})
+CREATE (C046)-[:TRAVELS{distance:1}]->(B028)
+
+MATCH (C039 {code:'C039'}), (C047 {code:'C047'})
+CREATE (C039)-[:TRAVELS{distance:17}]->(C047)
+
+MATCH (C047 {code:'C047'}), (C048 {code:'C048'})
+CREATE (C047)-[:TRAVELS{distance:1}]->(C048)
+
+MATCH (C048 {code:'C048'}), (B030 {code:'B030'})
+CREATE (C048)-[:TRAVELS{distance:1}]->(B030)
+
+MATCH (C048 {code:'C048'}), (B031 {code:'B031'})
+CREATE (C048)-[:TRAVELS{distance:1}]->(B031)
+
+MATCH (C047 {code:'C047'}), (C049 {code:'C049'})
+CREATE (C047)-[:TRAVELS{distance:18}]->(C049)
+
+MATCH (C049 {code:'C049'}), (C050 {code:'C050'})
+CREATE (C049)-[:TRAVELS{distance:3}]->(C050)
+
+MATCH (C050 {code:'C050'}), (B066 {code:'B066'})
+CREATE (C050)-[:TRAVELS{distance:1}]->(B066)
+
+MATCH (C050 {code:'C050'}), (C051 {code:'C051'})
+CREATE (C050)-[:TRAVELS{distance:2}]->(C051)
+
+MATCH (C051 {code:'C051'}), (E6 {code:'E6'})
+CREATE (C051)-[:TRAVELS{distance:1}]->(E6)
+
+MATCH (C051 {code:'C051'}), (C052 {code:'C052'})
+CREATE (C051)-[:TRAVELS{distance:4}]->(C052)
+
+MATCH (C052 {code:'C052'}), (B035 {code:'B035'})
+CREATE (C052)-[:TRAVELS{distance:1}]->(B035)
+
+MATCH (C052 {code:'C052'}), (B067 {code:'B067'})
+CREATE (C052)-[:TRAVELS{distance:1}]->(B067)
+
+MATCH (C052 {code:'C052'}), (C053 {code:'C053'})
+CREATE (C052)-[:TRAVELS{distance:9}]->(C053)
+
+MATCH (C053 {code:'C053'}), (B071 {code:'B071'})
+CREATE (C053)-[:TRAVELS{distance:1}]->(B071)
+
+MATCH (C053 {code:'C053'}), (C054 {code:'C054'})
+CREATE (C053)-[:TRAVELS{distance:2}]->(C054)
+
+MATCH (C054 {code:'C054'}), (B032 {code:'B032'})
+CREATE (C054)-[:TRAVELS{distance:1}]->(B032)
+
+MATCH (C054 {code:'C054'}), (C055 {code:'C055'})
+CREATE (C054)-[:TRAVELS{distance:2}]->(C055)
+
+MATCH (C055 {code:'C055'}), (B033 {code:'B033'})
+CREATE (C055)-[:TRAVELS{distance:1}]->(B033)
+
+MATCH (C055 {code:'C055'}), (C056 {code:'C056'})
+CREATE (C055)-[:TRAVELS{distance:6}]->(C056)
+
+MATCH (C056 {code:'C056'}), (B068 {code:'B068'})
+CREATE (C056)-[:TRAVELS{distance:1}]->(B068)
+
+MATCH (C056 {code:'C056'}), (B069 {code:'B069'})
+CREATE (C056)-[:TRAVELS{distance:1}]->(B069)
+
+MATCH (C056 {code:'C056'}), (B070 {code:'B070'})
+CREATE (C056)-[:TRAVELS{distance:1}]->(B070)
+
+MATCH (C056 {code:'C056'}), (B034 {code:'B034'})
+CREATE (C056)-[:TRAVELS{distance:1}]->(B034)
