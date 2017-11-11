@@ -59,7 +59,6 @@ class Search extends Component {
         className="searchInput"
 
       />
-      <RaisedButton label="GO" primary={true} className="currentLocation" onClick={this.handleSubmit} />
 
         <TextField
           name="searchInput"

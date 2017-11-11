@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import Search from './search/search';
-import AppBar from 'material-ui/AppBar';
 import MapContainer from './map/mapContainer';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Login from './login/login';
-import Menu from './search/menu';
-
+import SideBar from './side-bar/sideBar';
 
 import '../styles/styles.css';
 
@@ -14,12 +11,9 @@ class App extends Component {
     return (
       <MuiThemeProvider>
         <div>
-          <AppBar title="Feup Finder" />
-          <Menu/>
+          <SideBar />
           <MapContainer />
           <Search />
-          <Login />
-
         </div>
       </MuiThemeProvider>
     );
