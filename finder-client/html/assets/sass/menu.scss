@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed');
+
 /* Position and sizing of burger button */
 .bm-burger-button {
   position: fixed;
-  width: 36px;
-  height: 30px;
+  width: 26px;
+  height: 20px;
   left: 36px;
   top: 36px;
 }
@@ -57,5 +59,14 @@
   text-decoration: none;
   font-size: 1.1em;
   padding-top: 4%;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+}
 
+#username{
+  color: rgb(0,0,0);
+  text-decoration: none;
+  font-size: 1.2em;
+  margin-top: 3%;
+  margin-top: 8%;
+  font-family: 'Barlow Semi Condensed', sans-serif;
 }

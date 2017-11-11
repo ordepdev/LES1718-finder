@@ -12,7 +12,7 @@ class menu extends Component {
     return (
       <Menu>
         <span id="photo"> </span>
-        <p id="home" id="username" href="/">Username</p>
+        <p id="username" href="/">Username</p>
         <a className="menu-item" href="/">Search</a>
         <a className="menu-item" href="/contact">Navigation</a>
         <a className="menu-item" href="/contact">My favorites</a>
