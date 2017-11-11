@@ -1,0 +1,16 @@
+{
+  "name": "feup-finder",
+  "version": "1.0.0",
+  "scripts": {
+    "client": "cd finder-client && npm install && npm start",
+    "server": "cd finder-server && npm install && node server.js",
+    "start": "concurrently \"npm run client\" \"npm run server\""
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0"
+  },
+  "engines": {
+    "node": "8.7.0"
+  },
+  "license": "MIT"
+}
