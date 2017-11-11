@@ -9,8 +9,5 @@
   "devDependencies": {
     "concurrently": "^3.5.0"
   },
-  "engines": {
-    "node": "8.7.0"
-  },
   "license": "MIT"
 }
