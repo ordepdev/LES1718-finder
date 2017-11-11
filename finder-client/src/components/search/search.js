@@ -59,7 +59,6 @@ class Search extends Component {
         className="searchInput"
 
       />
-
         <TextField
           name="searchInput"
           value={this.state.searchInput}

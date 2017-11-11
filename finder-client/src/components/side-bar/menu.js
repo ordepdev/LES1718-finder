@@ -24,4 +24,5 @@ class menu extends Component {
     );
   }
 }
+
 export default menu;
