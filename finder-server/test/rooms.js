@@ -19,7 +19,6 @@ describe('Rooms', () => {
 
   after(function(done){
     mongoose.connection.close(done);
-    process.exit(0);
   });
 
   describe('/GET rooms', () => {
