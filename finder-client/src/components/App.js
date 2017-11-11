@@ -4,6 +4,8 @@ import AppBar from 'material-ui/AppBar';
 import MapContainer from './map/mapContainer';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Login from './login/login';
+import Menu from './search/menu';
+
 
 import '../styles/styles.css';
 
@@ -13,9 +15,11 @@ class App extends Component {
       <MuiThemeProvider>
         <div>
           <AppBar title="Feup Finder" />
-          <Search />
+          <Menu/>
           <MapContainer />
+          <Search />
           <Login />
+
         </div>
       </MuiThemeProvider>
     );
