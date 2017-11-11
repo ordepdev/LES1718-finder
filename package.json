@@ -2,8 +2,8 @@
   "name": "feup-finder",
   "version": "1.0.0",
   "scripts": {
-    "client": "cd finder-client && npm install && npm start",
-    "server": "cd finder-server && npm install && node server.js",
+    "client": "cd finder-client && npm start",
+    "server": "cd finder-server && node server.js",
     "start": "concurrently \"npm run client\" \"npm run server\""
   },
   "devDependencies": {
