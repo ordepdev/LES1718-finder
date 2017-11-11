@@ -1,29 +1,17 @@
 'use strict';
 
 const Hapi = require('hapi');
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3000;
 const server = new Hapi.Server();
 const mongodb = require('./mongodb');
 const rooms = require('./routes/rooms');
 const navigation = require("./routes/navigation"); 
 
 server.connection({ port: port, host: 'localhost' });
-server.start((err) => {
-  if (err) {
-    throw err;
-  }
-});
+server.start();
 
 server.route(rooms);
 server.route(navigation);
-
-server.route({
-  method: 'GET',
-  path: '/',
-  handler: function (request, reply) {
-    reply('Hello, world!');
-  }
-});
 
 server.register({
   register: require("hapi-and-healthy"),
@@ -33,4 +21,3 @@ server.register({
 });
 
 module.exports = server;
-
