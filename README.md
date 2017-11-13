@@ -26,5 +26,9 @@
 * In order to prevent cross-origin problems, we have a proxy pass in the `package.json` of the client that's configured to look out for `localhost:3000`. If you're running the server on a different port, you need to update the `package.json` at `~/finder-client/` and change the configuration from `"proxy": "http://localhost:3000/"` to `"proxy": "http://localhost:YOUR_PORT_HERE/"`.
 
 ## CI/CD Flow
-![ci-cd-flow](https://github.com/ordepdev/LES1718-finder/blob/master/ci-cd-process.png)
+![ci-cd-flow](https://github.com/ordepdev/LES1718-finder/blob/master/assets/ci-cd-process.png)
+
 Currently, we can run both unit and integration tests on Travis CI and get information about the coverage and other quality metrics from Codecov and Codacy. If the build pass, the artifacts are published to Heroku.
+
+## Project Overview
+![overview](https://github.com/ordepdev/LES1718-finder/blob/master/assets/component-diagram.png)
