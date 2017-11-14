@@ -17,6 +17,9 @@ describe('Navigation', () => {
     session.run('CREATE (B001:CLASSROOM {code : "B001", coordinate: "41.1774890, -8.5951243"})-[:TRAVELS{distance:20}]->(B002:CLASSROOM {code : "B002", coordinate: "41.1774890, -8.5951243"})-[:TRAVELS{distance:10}]->(B003:CLASSROOM {code : "B003", coordinate: "41.1774890, -8.5951243"}) ')
       .then(function(res){
         done();
+      })
+      .catch(function (error) {
+        console.log(error);
       });
   });
 
