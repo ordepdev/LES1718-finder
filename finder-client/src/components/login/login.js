@@ -58,13 +58,13 @@ class Login extends Component {
                 buttonText="Login"
                 onSuccess={this.responseGoogle}
                 onFailure={this.failGoogle}
-                className="google"
             />
+
             <FacebookLogin
-                appId="452672998461342"
-                autoLoad={true}
-                fields="name,email,picture"
-                callback={this.responseFacebook}
+                  appId="452672998461342"
+                  autoLoad={true}
+                  fields="name,email,picture"
+                  callback={this.responseFacebook}
                 cssClass="my-facebook-button-class"
                 icon="fa-facebook"
             />
