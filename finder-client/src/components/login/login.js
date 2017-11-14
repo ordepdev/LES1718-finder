@@ -58,6 +58,7 @@ class Login extends Component {
                 buttonText="Login"
                 onSuccess={this.responseGoogle}
                 onFailure={this.failGoogle}
+                className="google"
             />
             <FacebookLogin
                 appId="452672998461342"

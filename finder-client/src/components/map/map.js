@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Search from '../search/search';
 import { DEFAULT_LATITUDE, DEFAULT_LONGITUDE, DEFAULT_ZOOM_LEVEL } from '../../constants/configuration';
 
 class Map extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      api: undefined,
+      map: undefined,
+      marker: undefined
+    }
+  }
 
   componentDidMount() {
     this.loadMap();
@@ -24,7 +35,7 @@ class Map extends Component {
       const { google } = this.props;
       const node = ReactDOM.findDOMNode(this.refs.map);
 
-      let lat, lng;
+      let lat, lng, marker = undefined;
 
       if (initialLat === undefined || initialLng === undefined) {
 
@@ -53,10 +64,12 @@ class Map extends Component {
       this.map = new google.maps.Map(node, mapConfig);
 
       if (showMarker) {
-        new google.maps.Marker({
-          position: {lat: initialLat, lng: initialLng},
+        marker = new google.maps.Marker({
+          position: { lat: initialLat, lng: initialLng },
           map: this.map
         });
+      } else if (this.state.marker !== undefined) {
+        marker = this.state.marker;
       }
 
       new google.maps.KmlLayer("https://www.google.com/maps/d/u/0/kml?mid=1Lk09pmnjKNyqJJVR3WOGYktiCrY&forcekml=1", {
@@ -64,13 +77,54 @@ class Map extends Component {
         preserveViewport: true,
         map: this.map
       });
+
+      this.setState({
+        api: google,
+        map: this.map,
+        marker: marker
+      });
+    }
+  }
+
+  /**
+   * Clears the position marker on the map.
+   */
+  clearMarker = () => {
+    if (this.state.marker !== undefined) {
+      let oldMarker = this.state.marker;
+      oldMarker.setMap(null);
+
+      this.setState({ marker: undefined });
+    } 
+  }
+
+  /**
+   * Updates the marker position on the map.
+   * @param {*} latitude Marker latitude.
+   * @param {*} longitude Marker longitude.
+   */
+  updateMarker = (latitude, longitude) => {
+    if (latitude !== undefined && longitude !== undefined) {
+      this.clearMarker();
+
+      let newMarker = new this.state.api.maps.Marker({
+        position: { lat: parseFloat(latitude), lng: parseFloat(longitude) },
+        map: this.state.map
+      });
+
+      this.setState({ marker: newMarker });
     }
   }
 
   render() {
     return (
-      <div ref='map' className="map-container">
-        Loading map...
+      <div>
+        <div ref='map' className="map-container">
+          Loading map...
+        </div>
+        <Search 
+          updateMarker={this.updateMarker}
+          clearMarker={this.clearMarker} />
       </div>
     );
   }

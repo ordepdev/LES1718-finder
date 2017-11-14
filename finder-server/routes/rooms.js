@@ -8,9 +8,6 @@ module.exports = [
     path: '/rooms',
     handler(request, reply) {
       Room.find({}, '', function(err, rooms) {
-        if (err) {
-          throw err;
-        }
         reply(rooms);
       });
     }
@@ -20,9 +17,6 @@ module.exports = [
     path: '/rooms/{name}',
     handler(request, reply) {
       Room.findOne({'name': request.params.name}, '', function(err, room) {
-        if (err) {
-          throw err;
-        }
         if (room === null) {
           return reply({
             "message": "Room [{room}] was not found."

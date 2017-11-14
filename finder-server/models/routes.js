@@ -1,8 +1,7 @@
-const neo4j = require('neo4j-driver').v1;
+"use strict";
 
-const db = neo4j.driver("bolt://localhost", 
-  neo4j.auth.basic("neo4j", "password")); 
-const session = db.session();
+const Neo4j = require("../neo4j");
+const session = Neo4j.db.session();
 
 module.exports = {
   route: function(a, b, callback) {
@@ -35,10 +34,6 @@ module.exports = {
         };
         session.close();
         callback(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-        session.close();
-      });  
+      });
   }
 }
