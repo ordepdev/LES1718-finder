@@ -39,7 +39,7 @@ class Search extends Component {
         this.setState({
           errorData: error.message
         });
-        
+
         this.props.clearMarker();
       });
     }
@@ -47,16 +47,25 @@ class Search extends Component {
 
   render() {
     return (
-      <div>
+      <div id="searchBar">
+      <TextField
+        // name="searchInput"
+        // value={this.state.searchInput}
+        hintText="current location"
+        // errorText={this.state.errorText}
+        // onChange={this.handleInputChange}
+        className="searchInput"
+
+      />
         <TextField
           name="searchInput"
           value={this.state.searchInput}
           hintText="Search for a POI"
           errorText={this.state.inputErrorText}
           onChange={this.handleInputChange}
+          className="searchInput"
         />
-        <RaisedButton label="Primary" primary={true} onClick={this.handleSubmit} />
-
+        <RaisedButton label="GO" primary={true} className="searchButton" onClick={this.handleSubmit} />
         {
           this.state.errorData !== undefined &&
           <div>

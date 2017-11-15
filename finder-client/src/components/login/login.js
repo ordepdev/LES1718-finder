@@ -26,7 +26,7 @@ class Login extends Component {
             facebookId: newUserId
         });
     }
-    
+
 
     responseGoogle = (response) => {
         console.log("sucess");
@@ -38,18 +38,18 @@ class Login extends Component {
     failGoogle = (response) => {
         console.log(response);
         console.log("Error");
-        
+
     }
 
     responseFacebook = (response) => {
         console.log(response);
         this.updateFacebookState(response.name);
     }
-    
+
     render() {
         return (
-          <div>
-       
+          <div id="login">
+
             <label> {this.state.userId} </label>
 
 
@@ -59,11 +59,12 @@ class Login extends Component {
                 onSuccess={this.responseGoogle}
                 onFailure={this.failGoogle}
             />
+
             <FacebookLogin
-                appId="452672998461342"
-                autoLoad={true}
-                fields="name,email,picture"
-                callback={this.responseFacebook}
+                  appId="452672998461342"
+                  autoLoad={true}
+                  fields="name,email,picture"
+                  callback={this.responseFacebook}
                 cssClass="my-facebook-button-class"
                 icon="fa-facebook"
             />
