@@ -7,7 +7,7 @@ margin-left: 24vw;
 }
 
 .searchInput {
-margin-left: 10vw;
+margin-left: 2vw;
 }
 
 .searchButton {
@@ -15,4 +15,20 @@ margin-left: 10vw;
 }
 .searchButton button {
 background-color: rgb(151,41,42) !important;
+}
+
+.navigationButton {
+width: 3%;
+margin-left: 8vw;
+
+box-shadow: none !important;
+}
+.navigationButton span {
+  color: rgb(151,41,42) !important;
+  font-size: 27px !important;
+
+}
+.navigationButton button {
+background-color: rgb(254,254,254) !important;
+
 }

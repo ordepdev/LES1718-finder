@@ -43,6 +43,7 @@ class Login extends Component {
     responseFacebook = (response) => {
         console.log(response);
         this.updateFacebookState(response.name);
+        this.props.callbackUsername(response.name);
     }
 
     render() {
@@ -51,7 +52,7 @@ class Login extends Component {
 
             <label> {this.state.userId} </label>
 
-            <GoogleLogin 
+            <GoogleLogin
                 socialId="516100194800-fk9fma2gacug78o873ando15isctvj0f.apps.googleusercontent.com"
                 className="google-login"
                 scope="profile"
