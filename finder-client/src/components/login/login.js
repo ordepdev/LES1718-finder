@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
-import GoogleLogin from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
-
+import { GoogleLogin } from 'react-google-login-component';
 
 class Login extends Component {
 
@@ -52,13 +51,13 @@ class Login extends Component {
 
             <label> {this.state.userId} </label>
 
-
-             <GoogleLogin
-                clientId="516100194800-fk9fma2gacug78o873ando15isctvj0f.apps.googleusercontent.com"
-                buttonText="Login"
-                onSuccess={this.responseGoogle}
-                onFailure={this.failGoogle}
-            />
+            <GoogleLogin 
+                socialId="516100194800-fk9fma2gacug78o873ando15isctvj0f.apps.googleusercontent.com"
+                className="google-login"
+                scope="profile"
+                fetchBasicProfile={false}
+                responseHandler={this.responseGoogle}
+                buttonText="Login With Google"/>
 
             <FacebookLogin
                   appId="452672998461342"
