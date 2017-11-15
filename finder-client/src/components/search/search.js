@@ -51,8 +51,13 @@ class Search extends Component {
     console.log("sucess");
 
   this.setState({showSecond: !this.state.showSecond});
-  this.setState({label: "-"});
-
+  if(this.state.label == '-'){
+      this.setState({label: "+"});
+  }
+  else{
+    this.setState({label: "-"});
+  }
+  
 
   }
 
