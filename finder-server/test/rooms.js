@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const Room = require('../models/room');
 const chai = require('chai');
 const http = require('chai-http');
-const server = require('../server').default;
+const server = require('../server');
 const should = chai.should();
 chai.use(http);
 
@@ -17,9 +17,9 @@ describe('Rooms', () => {
     });     
   });
 
-  after(function(){
-    mongoose.connection.close()
-    process.exit();
+  after(function(done){
+    mongoose.connection.close(done);
+    process.exit(0);
   });
 
   describe('/GET rooms', () => {

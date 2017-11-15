@@ -1,7 +1,8 @@
 language: node_js
 sudo: required
 services:
-- docker
+  - neo4j
+  - mongodb
 cache:
   directories:
   - node_modules
@@ -14,14 +15,9 @@ before_script:
 - npm install
 - npm install -g standard
 - cd ..
-- docker-compose build
-- docker-compose up -d
-- sleep 3
 script:
 - cd finder-server
 - npm test
-after_script:
-- docker-compose kill
 after_success: npm run coverage
 env:
   global:

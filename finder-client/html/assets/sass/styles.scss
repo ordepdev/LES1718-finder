@@ -1,1 +1,9 @@
 @import 'map';
+@import 'search';
+@import 'menu';
+@import 'sideBar';
+
+body{
+  margin: 0px !important;
+  background-color: rgb(254,254,254);
+}

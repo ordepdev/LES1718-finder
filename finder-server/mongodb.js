@@ -1,9 +1,9 @@
 'use strict';
 
 const mongoose = require('mongoose');
+const url = process.env.MONGODB_URI || "mongodb://localhost/finder";
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/finder', {
+mongoose.connect(url, {
   useMongoClient: true
-}).catch(err => console.error(err));
-
+});

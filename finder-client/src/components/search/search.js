@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import SearchResult from './search-result';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { getRoom } from '../../utils/communication-manager';
@@ -11,15 +10,15 @@ class Search extends Component {
 
     this.state = {
       searchInput: "",
-      errorText: "",
-      searchResult: undefined
+      inputErrorText: "",
+      errorMessage: ""
     }
   }
 
   handleInputChange = (event) => {
     this.setState({
-      [event.target.name] : event.target.value,
-      errorText: ""
+      [event.target.name]: event.target.value,
+      inputErrorText: ""
     });
   }
 
@@ -27,41 +26,51 @@ class Search extends Component {
     e.preventDefault();
 
     if (this.state.searchInput === "") {
-      this.setState({ errorText: "This field is required."});
+      this.setState({ inputErrorText: "This field is required." });
     } else {
       getRoom(this.state.searchInput).then((roomData) => {
         this.setState({
-          searchResult: {
-            roomData: roomData,
-            errorData: undefined
-          }
+          errorData: undefined
         });
+
+        let coordinates = roomData.coordinates.split(',');
+        this.props.updateMarker(coordinates[0], coordinates[1]);
       }).catch((error) => {
         this.setState({
-          searchResult: {
-            roomData: undefined,
-            errorData: error.message
-          }
+          errorData: error.message
         });
+
+        this.props.clearMarker();
       });
     }
   }
 
   render() {
     return (
-      <div>
+      <div id="searchBar">
+      <TextField
+        // name="searchInput"
+        // value={this.state.searchInput}
+        hintText="current location"
+        // errorText={this.state.errorText}
+        // onChange={this.handleInputChange}
+        className="searchInput"
+
+      />
         <TextField
           name="searchInput"
           value={this.state.searchInput}
           hintText="Search for a POI"
-          errorText={this.state.errorText}
+          errorText={this.state.inputErrorText}
           onChange={this.handleInputChange}
+          className="searchInput"
         />
-        <RaisedButton label="Primary" primary={true} onClick={this.handleSubmit} />
-    
+        <RaisedButton label="GO" primary={true} className="searchButton" onClick={this.handleSubmit} />
         {
-          this.state.searchResult !== undefined &&
-          <SearchResult data={this.state.searchResult}/>
+          this.state.errorData !== undefined &&
+          <div>
+            {this.state.errorData}
+          </div>
         }
 
       </div>

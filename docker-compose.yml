@@ -1,6 +1,8 @@
 neo4j:
   image: neo4j:latest
   container_name: "neo4j"
+  environment:
+   - NEO4J_AUTH=none
   ports:
    - "7687:7687"
    - "7474:7474"

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
-import GoogleLogin from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
-
+import { GoogleLogin } from 'react-google-login-component';
 
 class Login extends Component {
 
@@ -26,7 +25,7 @@ class Login extends Component {
             facebookId: newUserId
         });
     }
-    
+
 
     responseGoogle = (response) => {
         console.log("sucess");
@@ -38,32 +37,33 @@ class Login extends Component {
     failGoogle = (response) => {
         console.log(response);
         console.log("Error");
-        
+
     }
 
     responseFacebook = (response) => {
         console.log(response);
         this.updateFacebookState(response.name);
     }
-    
+
     render() {
         return (
-          <div>
-       
+          <div id="login">
+
             <label> {this.state.userId} </label>
 
+            <GoogleLogin 
+                socialId="516100194800-fk9fma2gacug78o873ando15isctvj0f.apps.googleusercontent.com"
+                className="google-login"
+                scope="profile"
+                fetchBasicProfile={false}
+                responseHandler={this.responseGoogle}
+                buttonText="Login With Google"/>
 
-             <GoogleLogin
-                clientId="516100194800-fk9fma2gacug78o873ando15isctvj0f.apps.googleusercontent.com"
-                buttonText="Login"
-                onSuccess={this.responseGoogle}
-                onFailure={this.failGoogle}
-            />
             <FacebookLogin
-                appId="452672998461342"
-                autoLoad={true}
-                fields="name,email,picture"
-                callback={this.responseFacebook}
+                  appId="452672998461342"
+                  autoLoad={true}
+                  fields="name,email,picture"
+                  callback={this.responseFacebook}
                 cssClass="my-facebook-button-class"
                 icon="fa-facebook"
             />
