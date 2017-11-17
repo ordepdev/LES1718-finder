@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import GoogleLogin from 'react-google-login';
-import { authenticate } from '../../../utils/authentication';
+import { authenticate, logout} from '../../../utils/authentication';
 import { GOOGLE_PROVIDER } from '../../../constants/login-providers';
 
 class GoogleProviderLogin extends Component {
@@ -17,7 +17,7 @@ class GoogleProviderLogin extends Component {
     if (this.props.authentication.isLoggedIn) {
       if (this.props.authentication.provider === GOOGLE_PROVIDER) {
         return (
-          <button className="google-login">Logout</button>
+          <button className="google-login" onClick={logout} >Logout</button>
         );
       }
     } else {

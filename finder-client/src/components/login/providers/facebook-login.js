@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FacebookLogin from 'react-facebook-login';
-import { authenticate } from '../../../utils/authentication';
+import { authenticate, logout } from '../../../utils/authentication';
 import { FACEBOOK_PROVIDER } from '../../../constants/login-providers';
 
 class FacebookProviderLogin extends Component {
@@ -17,7 +17,7 @@ class FacebookProviderLogin extends Component {
     if (this.props.authentication.isLoggedIn) {
       if (this.props.authentication.provider === FACEBOOK_PROVIDER) {
         return (
-          <button className="my-facebook-button-class">Logout</button>
+          <button className="my-facebook-button-class" onClick={logout} >Logout</button>
         );
       }
     } else {

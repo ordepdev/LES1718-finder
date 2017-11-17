@@ -71,3 +71,33 @@ export function authenticateUser(userID, provider) {
 		});
 	});
 }
+
+/**
+ * Logs out the user.
+ */
+export function logoutUser() {
+	return new Promise(function (resolve, reject) {
+
+		let requestUrl = "/logout";
+
+		let requestOptions = {
+			uri: requestUrl,
+			method: "GET",
+			headers: {
+				'Content-Type': 'application/json',
+				'pragma': 'no-cache',
+				'cache-control': 'no-cache'
+			}
+		}
+
+		fetch(requestUrl, requestOptions).then(function (response) {
+			if (response.status === 200) {
+				return resolve();
+			} else {
+				return reject(Error("An error has occurred! Please try again."));
+			}
+		}, function (error) {
+			return reject(error);
+		});
+	});
+}
