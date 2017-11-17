@@ -5,6 +5,13 @@ import { FACEBOOK_PROVIDER } from '../../../constants/login-providers';
 
 class FacebookProviderLogin extends Component {
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      this.props.authentication.isLoggedIn !== nextProps.authentication.isLoggedIn
+      || this.props.authentication.provider !== nextProps.authentication.provider
+    );
+  }
+
   onSuccessCallback = (response) => {
     authenticate(response.userID, FACEBOOK_PROVIDER);
   }
@@ -13,24 +20,34 @@ class FacebookProviderLogin extends Component {
     //TODO
   }
 
-  render() {
-    let buttonText = "Login With Facebook";
-
-    if (this.props.authentication.provider === FACEBOOK_PROVIDER) {
-      buttonText = "Logout";
+  renderButton = () => {
+    if (this.props.authentication.isLoggedIn) {
+      if (this.props.authentication.provider === FACEBOOK_PROVIDER) {
+        return (
+          <button className="my-facebook-button-class">Logout</button>
+        );
+      }
+    } else {
+      return (
+        <FacebookLogin
+          appId="452672998461342"
+          autoLoad={false}
+          icon="fa-facebook"
+          cssClass="my-facebook-button-class"
+          fields="name,email,picture"
+          textButton="Login With Facebook"
+          callback={this.onSuccessCallback}
+          onFailure={this.onErrorCallback}
+        />
+      );
     }
+  }
 
+  render() {
     return (
-      <FacebookLogin
-        appId="452672998461342"
-        autoLoad={false}
-        icon="fa-facebook"
-        cssClass="my-facebook-button-class"
-        fields="name,email,picture"
-        textButton={buttonText}
-        callback={this.onSuccessCallback}
-        onFailure={this.onErrorCallback}
-      />
+      <div>
+        {this.renderButton()}
+      </div>
     );
   }
 }

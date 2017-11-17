@@ -5,6 +5,13 @@ import { GOOGLE_PROVIDER } from '../../../constants/login-providers';
 
 class GoogleProviderLogin extends Component {
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      this.props.authentication.isLoggedIn !== nextProps.authentication.isLoggedIn
+      || this.props.authentication.provider !== nextProps.authentication.provider
+    );
+  }
+
   onSuccessCallback = (response) => {
     authenticate(response.googleId, GOOGLE_PROVIDER);
   }
@@ -13,21 +20,31 @@ class GoogleProviderLogin extends Component {
     //TODO
   }
 
-  render() {
-    let buttonText = "Login With Google";
-
-    if (this.props.authentication.provider === GOOGLE_PROVIDER) {
-      buttonText = "Logout";
+  renderButton = () => {
+    if (this.props.authentication.isLoggedIn) {
+      if (this.props.authentication.provider === GOOGLE_PROVIDER) {
+        return (
+          <button className="google-login">Logout</button>
+        );
+      }
+    } else {
+      return (
+        <GoogleLogin
+          clientId="516100194800-fk9fma2gacug78o873ando15isctvj0f.apps.googleusercontent.com"
+          buttonText="Login With Google"
+          className="google-login"
+          onSuccess={this.onSuccessCallback}
+          onFailure={this.responseGoogle}
+        />
+      );
     }
+  }
 
+  render() {
     return (
-      <GoogleLogin
-        clientId="516100194800-fk9fma2gacug78o873ando15isctvj0f.apps.googleusercontent.com"
-        buttonText={buttonText}
-        className="google-login"
-        onSuccess={this.onSuccessCallback}
-        onFailure={this.responseGoogle}
-      />
+      <div>
+        {this.renderButton()}
+      </div>
     );
   }
 }
