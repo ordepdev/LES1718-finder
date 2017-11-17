@@ -12,16 +12,11 @@ class menu extends Component {
     }
   }
 
-  showSettings (event) {
-    event.preventDefault();
-  }
-
   callbackUsername = (username) => {
-    this.setState({username: username});
+    this.setState({ username: username });
   }
 
-
-  render () {
+  render() {
     return (
       <Menu>
         <span id="photo"> </span>
@@ -32,7 +27,7 @@ class menu extends Component {
         <a className="menu-item" href="/contact">Last searches</a>
         <a className="menu-item" href="/about">About</a>
         <a className="menu-item" href="/about">Log out</a>
-        <Login callbackUsername={this.callbackUsername}/>
+        <Login callbackUsername={this.callbackUsername} authentication={this.props.authentication} />
       </Menu>
     );
   }
