@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Search from './search/search';
 import MapContainer from './map/mapContainer';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import SideBar from './side-bar/sideBar';
@@ -13,7 +12,6 @@ class App extends Component {
         <div>
           <SideBar />
           <MapContainer />
-          <Search />
         </div>
       </MuiThemeProvider>
     );
