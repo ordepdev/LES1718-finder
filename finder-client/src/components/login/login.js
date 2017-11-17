@@ -4,6 +4,14 @@ import FacebookProviderLogin from './providers/facebook-login';
 import * as LoginProviders from '../../constants/login-providers';
 
 class Login extends Component {
+
+	shouldComponentUpdate(nextProps, nextState) {
+    return (
+      this.props.authentication.isLoggedIn !== nextProps.authentication.isLoggedIn
+      || this.props.authentication.provider !== nextProps.authentication.provider
+    );
+  }
+
 	render() {
 		return (
 			<div id="login">

@@ -5,13 +5,6 @@ import { GOOGLE_PROVIDER } from '../../../constants/login-providers';
 
 class GoogleProviderLogin extends Component {
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return (
-      this.props.authentication.isLoggedIn !== nextProps.authentication.isLoggedIn
-      || this.props.authentication.provider !== nextProps.authentication.provider
-    );
-  }
-
   onSuccessCallback = (response) => {
     authenticate(response.googleId, GOOGLE_PROVIDER);
   }

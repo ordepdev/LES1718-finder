@@ -5,13 +5,6 @@ import { FACEBOOK_PROVIDER } from '../../../constants/login-providers';
 
 class FacebookProviderLogin extends Component {
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return (
-      this.props.authentication.isLoggedIn !== nextProps.authentication.isLoggedIn
-      || this.props.authentication.provider !== nextProps.authentication.provider
-    );
-  }
-
   onSuccessCallback = (response) => {
     authenticate(response.userID, FACEBOOK_PROVIDER);
   }
