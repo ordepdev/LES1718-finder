@@ -72,7 +72,7 @@ class Map extends Component {
         marker = this.state.marker;
       }
 
-      new google.maps.KmlLayer("https://www.google.com/maps/d/u/0/kml?mid=1Lk09pmnjKNyqJJVR3WOGYktiCrY&forcekml=1", {
+      new google.maps.KmlLayer("https://gist.githubusercontent.com/RicardoAlmeida25/c9defb562055597eee62d430db656189/raw/64a44c37dec1b6febc3d0aef864c32fd45114f57/feup_prok.kml", {
         suppressInfoWindows: false,
         preserveViewport: true,
         map: this.map
@@ -95,7 +95,7 @@ class Map extends Component {
       oldMarker.setMap(null);
 
       this.setState({ marker: undefined });
-    } 
+    }
   }
 
   /**
@@ -122,7 +122,7 @@ class Map extends Component {
         <div ref='map' className="map-container">
           Loading map...
         </div>
-        <Search 
+        <Search
           updateMarker={this.updateMarker}
           clearMarker={this.clearMarker} />
       </div>

@@ -11,7 +11,9 @@ class Search extends Component {
     this.state = {
       searchInput: "",
       inputErrorText: "",
-      errorMessage: ""
+      errorMessage: "",
+      showSecond: false,
+      label: "+"
     }
   }
 
@@ -44,19 +46,38 @@ class Search extends Component {
       });
     }
   }
+  showSecond = (e) => {
+    e.preventDefault();
+    console.log("sucess");
+
+  this.setState({showSecond: !this.state.showSecond});
+  if(this.state.label == '-'){
+      this.setState({label: "+"});
+  }
+  else{
+    this.setState({label: "-"});
+  }
+  
+
+  }
 
   render() {
     return (
       <div id="searchBar">
-      <TextField
-        // name="searchInput"
-        // value={this.state.searchInput}
-        hintText="current location"
-        // errorText={this.state.errorText}
-        // onChange={this.handleInputChange}
-        className="searchInput"
 
-      />
+
+      {
+        this.state.showSecond &&
+        <TextField
+            name="searchInput"
+           // value={this.state.searchInput}
+           hintText="current location"
+           // errorText={this.state.errorText}
+           // onChange={this.handleInputChange}
+           className="searchInput"
+
+         />
+      }
         <TextField
           name="searchInput"
           value={this.state.searchInput}
@@ -65,6 +86,7 @@ class Search extends Component {
           onChange={this.handleInputChange}
           className="searchInput"
         />
+        <RaisedButton label={this.state.label} primary={true} className="navigationButton" onClick={this.showSecond} />
         <RaisedButton label="GO" primary={true} className="searchButton" onClick={this.handleSubmit} />
         {
           this.state.errorData !== undefined &&
