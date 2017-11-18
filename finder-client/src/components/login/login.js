@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import GoogleProviderLogin from './providers/google-login';
 import FacebookProviderLogin from './providers/facebook-login';
 import * as LoginProviders from '../../constants/login-providers';
+import { updateAuthInfo } from '../../utils/authentication';
 
 class Login extends Component {
+
+	componentDidMount() {
+		updateAuthInfo();
+	}
 
 	shouldComponentUpdate(nextProps, nextState) {
     return (

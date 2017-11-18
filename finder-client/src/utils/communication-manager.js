@@ -41,19 +41,19 @@ export function getRoom(room) {
 }
 
 /**
- * Authenticates an user.
- * @param {*} userID User id.
- * @param {*} provider Provider the user used to login.
+ * Gets the authentication info.
+ * @param {*} secret Secret (access token) used to authenticate the user.
  */
-export function authenticateUser(userID, provider) {
+export function getAuthInfo(secret) {
 	return new Promise(function (resolve, reject) {
 
-		let requestUrl = "/authentication/" + userID + "/" + provider;
+		let requestUrl = "/authentication";
 
 		let requestOptions = {
 			uri: requestUrl,
 			method: "GET",
 			headers: {
+				'Authorization': 'Basic ' + secret,
 				'Content-Type': 'application/json',
 				'pragma': 'no-cache',
 				'cache-control': 'no-cache'
@@ -73,26 +73,29 @@ export function authenticateUser(userID, provider) {
 }
 
 /**
- * Logs out the user.
+ * Authenticates an user.
+ * @param {*} userID User id.
+ * @param {*} provider Provider the user used to login.
  */
-export function logoutUser() {
+export function authenticateUser(userID, provider) {
 	return new Promise(function (resolve, reject) {
 
-		let requestUrl = "/logout";
+		let requestUrl = "/authenticate";
 
 		let requestOptions = {
 			uri: requestUrl,
-			method: "GET",
+			method: "POST",
 			headers: {
 				'Content-Type': 'application/json',
 				'pragma': 'no-cache',
 				'cache-control': 'no-cache'
-			}
+			},
+			body: JSON.stringify({ "userID": userID, "provider": provider})
 		}
 
 		fetch(requestUrl, requestOptions).then(function (response) {
 			if (response.status === 200) {
-				return resolve();
+				return resolve(response.json());
 			} else {
 				return reject(Error("An error has occurred! Please try again."));
 			}
