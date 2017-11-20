@@ -17,9 +17,10 @@ describe('Users', () => {
     });
   });
 
-  after(function (done) {
-    mongoose.connection.close(done);
-    process.exit(0);
+  after((done) => {
+    User.remove({}, (err) => {
+      done();
+    });
   });
 
   describe('/GET authentication', () => {

@@ -4,7 +4,9 @@ process.env.NODE_ENV = "test";
 
 const Neo4j = require("../neo4j");
 const session = Neo4j.db.session();
+const User = require('../models/user');
 const Routes = require('../models/routes');
+const History = require('../models/history');
 const chai = require('chai');
 const http = require('chai-http');
 const server = require('../server').default;
@@ -13,8 +15,27 @@ chai.use(http);
 
 describe('Navigation', () => {
 
-  beforeEach(function(done){
-    session.run('CREATE (B001:CLASSROOM {code : "B001", coordinate: "41.1774890, -8.5951243"})-[:TRAVELS{distance:20}]->(B002:CLASSROOM {code : "B002", coordinate: "41.1774890, -8.5951243"})-[:TRAVELS{distance:10}]->(B003:CLASSROOM {code : "B003", coordinate: "41.1774890, -8.5951243"}) ')
+  before(function(done) {
+    new User({ userId: 12345, accessToken: "user-token-1", provider: "google" })
+      .save(function() {
+        done();
+      });
+  });
+
+  beforeEach(function(done) {
+    session.run('CREATE (R001:CLASSROOM {code : "R001", coordinate: ' +
+      '"41.1774890, -8.5951243"})-[:TRAVELS{distance:20}]->(R002:CLASSROOM ' +
+      '{code : "R002", coordinate: "41.1774890, -8.5951243"})-[' +
+      ':TRAVELS{distance:10}]->(R003:CLASSROOM {code : "R003", ' + 
+      'coordinate: "41.1774890, -8.5951243"})')
+      .then(function(res){
+        done();
+      });
+  });
+
+  afterEach(function(done) {
+    session.run('MATCH (R001{code:"R001"}),(R002{code:"R002"})' +
+      ',(R003{code:"R003"}) DETACH DELETE R001, R002, R003')
       .then(function(res){
         done();
       });
@@ -22,13 +43,17 @@ describe('Navigation', () => {
 
   after(function(done) {
     session.close();
-    done();
+    History.remove({}, (err) => { 
+      User.remove({}, (err) => {
+        done();
+      });        
+    });
   });
 
   describe('given two directly connected rooms', () => {
     it('it should return the route path with size two', (done) => {
       chai.request('http://localhost:3000')
-        .get('/navigation/from/B001/to/B002')
+        .get('/navigation/from/R001/to/R002')
         .end((err, res) => {
           res.should.have.status(200);
           res.body.path.should.be.a('array');
@@ -41,12 +66,30 @@ describe('Navigation', () => {
   describe('given two indirectly connected rooms', () => {
     it('it should return the route path with size three', (done) => {
       chai.request('http://localhost:3000')
-        .get('/navigation/from/B001/to/B003')
+        .get('/navigation/from/R001/to/R003')
         .end((err, res) => {
           res.should.have.status(200);
           res.body.path.should.be.a('array');
           res.body.path.length.should.be.eql(3);
           done();
+        });
+    });
+  });
+
+  describe('given a authenticated navigation request', () => {
+    it('it should save the request into history', (done) => {
+      chai.request('http://localhost:3000')
+        .get('/navigation/from/R001/to/R002')
+        .set('authorization', 'basic user-token-1')
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.path.should.be.a('array');
+          res.body.path.length.should.be.eql(2);
+          History.find({ user: 12345 }, function(err, response) {
+            response.should.be.a('array');
+            response.length.should.be.eql(1);
+            done();
+          });
         });
     });
   });
