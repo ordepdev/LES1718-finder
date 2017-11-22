@@ -4,7 +4,7 @@ import { SERVER_ENDPOINT_URL } from '../constants/configuration';
  * Requests a shortest Path .
  * @param [*] rooms POI name.
  */
-export function getPath(local, destination) {
+export function getPath(local, destination, secret) {
 	return new Promise(function (resolve, reject) {
 
 		let requestUrl = "/navigation/from/" + local + "/to/" + destination;
@@ -13,6 +13,7 @@ export function getPath(local, destination) {
 			uri: requestUrl,
 			method: "GET",
 			headers: {
+				'Authorization': 'Basic ' + secret,
 				'Content-Type': 'application/json',
 				'pragma': 'no-cache',
 				'cache-control': 'no-cache'
