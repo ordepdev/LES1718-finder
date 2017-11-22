@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-import { getRoom } from '../../utils/communication-manager';
+import { getRoom, getPath } from '../../utils/communication-manager';
 
 class Search extends Component {
 
@@ -9,6 +9,7 @@ class Search extends Component {
     super(props);
 
     this.state = {
+	  currentLocation: "",
       searchInput: "",
       inputErrorText: "",
       errorMessage: "",
@@ -26,7 +27,22 @@ class Search extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-
+	
+	let locCoordenates = undefined;
+	
+	if(this.state.currentLocation !== "")
+	{
+		getRoom(this.state.currentLocation).then((roomData) => {
+        this.setState({
+          errorData: undefined
+        });
+        locCoordenates = roomData.coordinates.split(',');
+      }).catch((error) => {
+        this.setState({
+          errorData: error.message
+        });
+      });
+	}
     if (this.state.searchInput === "") {
       this.setState({ inputErrorText: "This field is required." });
     } else {
@@ -34,9 +50,35 @@ class Search extends Component {
         this.setState({
           errorData: undefined
         });
-
         let coordinates = roomData.coordinates.split(',');
-        this.props.updateMarker(coordinates[0], coordinates[1]);
+		if(locCoordenates === undefined){
+			this.props.updateMarker(coordinates[0], coordinates[1]);
+		}
+		else {
+			console.log(this.props);
+			//let pathData = undefined;
+			getPath(this.state.currentLocation, this.state.searchInput).then((pathData) => {
+        let new_coord = pathData.path.map(path => path.coordinate);
+        this.props.removeAllLines();
+        for(var i = 1; i < new_coord.length; i++)
+        {
+          let ori_coord = new_coord[i-1].split(',');
+          let dest_coord = new_coord[i].split(',');
+
+          this.props.createLine (
+            ori_coord[0],ori_coord[1],
+            dest_coord[0], dest_coord[1]
+          );
+        }
+
+			}).catch((error) => {
+				this.setState({
+				  errorData: error.message
+				});
+			});
+		}
+		console.log(this.state.currentLocation);
+		console.log(this.state.searchInput);
       }).catch((error) => {
         this.setState({
           errorData: error.message
@@ -52,10 +94,15 @@ class Search extends Component {
 
   this.setState({showSecond: !this.state.showSecond});
   if(this.state.label === '-'){
-      this.setState({label: "+"});
+      this.setState({
+      label: "+", 
+      currentLocation: ""
+    });
   }
   else{
-    this.setState({label: "-"});
+    this.setState({
+      label: "-" 
+    });
   }
 
 
@@ -69,18 +116,18 @@ class Search extends Component {
       {
         this.state.showSecond &&
         <TextField
-            name="searchInput"
-           // value={this.state.searchInput}
+            name="currentLocation"
+            value={this.state.currentLocation.toUpperCase()}
            hintText="current location"
            // errorText={this.state.errorText}
-           // onChange={this.handleInputChange}
+            onChange={this.handleInputChange}
            className="searchInput"
 
          />
       }
         <TextField
           name="searchInput"
-          value={this.state.searchInput}
+          value={this.state.searchInput.toUpperCase()}
           hintText="Search for a POI"
           errorText={this.state.inputErrorText}
           onChange={this.handleInputChange}
