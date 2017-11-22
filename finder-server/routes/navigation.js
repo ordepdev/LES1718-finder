@@ -1,6 +1,8 @@
 "use strict";
 
 const Navigation = require("../models/routes");
+const History = require("../models/history");
+const AuthenticationService = require("../services/authenticationService");
 
 module.exports = [
   {
@@ -12,9 +14,17 @@ module.exports = [
         if (!response.path.length) {
           return reply({ message: "Route not found."}).code(404);
         }
+        AuthenticationService.isAuthenticated(request, reply, function(user) {
+          if (user) {
+            new History({
+              from: request.params.start,
+              to: request.params.end,
+              user: user.userId
+            }).save();    
+          }
+        });
         return reply(response).code(200);
       });
     }
   }
 ];
-
