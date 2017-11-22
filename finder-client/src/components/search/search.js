@@ -30,7 +30,7 @@ class Search extends Component {
 	
 	let locCoordenates = undefined;
 	
-	if(this.state.currentLocation != "")
+	if(this.state.currentLocation !== "")
 	{
 		getRoom(this.state.currentLocation).then((roomData) => {
         this.setState({
@@ -51,7 +51,7 @@ class Search extends Component {
           errorData: undefined
         });
         let coordinates = roomData.coordinates.split(',');
-		if(locCoordenates == undefined){
+		if(locCoordenates === undefined){
 			this.props.updateMarker(coordinates[0], coordinates[1]);
 		}
 		else {
@@ -59,7 +59,7 @@ class Search extends Component {
 			//let pathData = undefined;
 			getPath(this.state.currentLocation, this.state.searchInput).then((pathData) => {
         let new_coord = pathData.path.map(path => path.coordinate);
-       
+        this.props.removeAllLines();
         for(var i = 1; i < new_coord.length; i++)
         {
           let ori_coord = new_coord[i-1].split(',');
@@ -70,24 +70,12 @@ class Search extends Component {
             dest_coord[0], dest_coord[1]
           );
         }
-        //console.log(ori_coord);
-        //console.log(pathData);
-/*
-        new_coord.forEach(function(array) {
-          console.log(array);
-        }, this);*/
-
 
 			}).catch((error) => {
 				this.setState({
 				  errorData: error.message
 				});
-			  });
-			/*
-			this.props.createLine (
-			locCoordenates[1],locCoordenates[0],
-			coordinates[1], coordinates[0]
-			);*/
+			});
 		}
 		console.log(this.state.currentLocation);
 		console.log(this.state.searchInput);
@@ -106,10 +94,15 @@ class Search extends Component {
 
   this.setState({showSecond: !this.state.showSecond});
   if(this.state.label === '-'){
-      this.setState({label: "+"});
+      this.setState({
+      label: "+", 
+      currentLocation: ""
+    });
   }
   else{
-    this.setState({label: "-"});
+    this.setState({
+      label: "-" 
+    });
   }
 
 
@@ -124,7 +117,7 @@ class Search extends Component {
         this.state.showSecond &&
         <TextField
             name="currentLocation"
-            value={this.state.currentLocation}
+            value={this.state.currentLocation.toUpperCase()}
            hintText="current location"
            // errorText={this.state.errorText}
             onChange={this.handleInputChange}
@@ -134,7 +127,7 @@ class Search extends Component {
       }
         <TextField
           name="searchInput"
-          value={this.state.searchInput}
+          value={this.state.searchInput.toUpperCase()}
           hintText="Search for a POI"
           errorText={this.state.inputErrorText}
           onChange={this.handleInputChange}

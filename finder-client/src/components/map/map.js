@@ -13,6 +13,7 @@ class Map extends Component {
       api: undefined,
       map: undefined,
       marker: undefined,
+      path: [],
     }
   }
 
@@ -119,10 +120,26 @@ class Map extends Component {
       this.setState({ marker: newMarker });
     }
   }
+
+removeAllLines = () => {
+  if(this.state.path.length > 0 )
+  {
+    console.log(this.state.path.length);
+    
+    this.state.path.forEach(function(element) {
+      element.setMap(null);
+    }, this);
+    this.setState({
+      path: []
+    });
+  }
+}  
   
 createLine = (latLoc, lngLoc, latDst, lngDst) => {
 	if (latLoc !== undefined && lngLoc !== undefined && latDst !== undefined && lngDst !== undefined) {
-	  this.clearMarker();
+    //map.clear();
+
+    var copy_map = this.state.map;
 
 	  let line = new this.state.api.maps.Polyline({
 			path: [
@@ -132,8 +149,15 @@ createLine = (latLoc, lngLoc, latDst, lngDst) => {
 			strokeColor: "#000000",
 			strokeOpacity: 1.0,
 			strokeWeight: 4,
-			map: this.map
-		});
+			map: copy_map
+    });
+    this.state.path.push(line);
+    this.setState({ 
+      map: copy_map
+      //path: line 
+    });
+
+
 	}
 }
 
@@ -146,7 +170,8 @@ createLine = (latLoc, lngLoc, latDst, lngDst) => {
         <Search
           updateMarker={this.updateMarker}
           clearMarker={this.clearMarker} 
-		  createLine={this.createLine}
+          createLine={this.createLine}
+          removeAllLines={this.removeAllLines}
 		  />
 
       </div>
