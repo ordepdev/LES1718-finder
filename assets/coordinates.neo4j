@@ -105,7 +105,7 @@ CREATE
 (C024:CORRIDOR {code : "C024", coordinate: "41.1775387, -8.5959976"}),
 (C025:CORRIDOR {code : "C025", coordinate: "41.1775226, -8.5960037"}),
 (C026:CORRIDOR {code : "C026", coordinate: "41.1774222, -8.5960318"}),
-(C027:CORRIDOR {code : "C020", coordinate: "41.1777301, -8.5961604"}),
+(C027:CORRIDOR {code : "C027", coordinate: "41.1777301, -8.5961604"}),
 (C028:CORRIDOR {code : "C028", coordinate: "41.1777008, -8.5961691"}),
 (C029:CORRIDOR {code : "C029", coordinate: "41.1777648, -8.5963679"}),
 (C030:CORRIDOR {code : "C030", coordinate: "41.1777371, -8.5963780"}),
