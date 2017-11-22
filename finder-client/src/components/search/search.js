@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { getRoom, getPath } from '../../utils/communication-manager';
+import { getCookie } from '../../utils/cookie-handler';
+import { SESSION_COOKIE_NAME } from '../../constants/configuration';
+
 
 class Search extends Component {
 
@@ -27,22 +30,9 @@ class Search extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-	
-	let locCoordenates = undefined;
-	
-	if(this.state.currentLocation !== "")
-	{
-		getRoom(this.state.currentLocation).then((roomData) => {
-        this.setState({
-          errorData: undefined
-        });
-        locCoordenates = roomData.coordinates.split(',');
-      }).catch((error) => {
-        this.setState({
-          errorData: error.message
-        });
-      });
-	}
+    
+    this.props.removeAllLines();
+    this.props.clearMarker();
     if (this.state.searchInput === "") {
       this.setState({ inputErrorText: "This field is required." });
     } else {
@@ -51,15 +41,20 @@ class Search extends Component {
           errorData: undefined
         });
         let coordinates = roomData.coordinates.split(',');
-		if(locCoordenates === undefined){
-			this.props.updateMarker(coordinates[0], coordinates[1]);
-		}
-		else {
+        this.props.updateMarker(coordinates[0], coordinates[1]);
+      }).catch((error) => {
+        this.setState({
+          errorData: error.message
+        });
+
+        this.props.clearMarker();
+      });
+		if(this.state.currentLocation !== "" && this.state.searchInput !==""){
 			console.log(this.props);
 			//let pathData = undefined;
-			getPath(this.state.currentLocation, this.state.searchInput).then((pathData) => {
+			getPath(this.state.currentLocation, this.state.searchInput, getCookie(SESSION_COOKIE_NAME)).then((pathData) => {
         let new_coord = pathData.path.map(path => path.coordinate);
-        this.props.removeAllLines();
+        
         for(var i = 1; i < new_coord.length; i++)
         {
           let ori_coord = new_coord[i-1].split(',');
@@ -79,13 +74,6 @@ class Search extends Component {
 		}
 		console.log(this.state.currentLocation);
 		console.log(this.state.searchInput);
-      }).catch((error) => {
-        this.setState({
-          errorData: error.message
-        });
-
-        this.props.clearMarker();
-      });
     }
   }
   showSecond = (e) => {

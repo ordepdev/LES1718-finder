@@ -13,6 +13,7 @@ class menu extends Component {
   }
 
   callbackUsername = (username) => {
+    console.log(username);
     this.setState({ username: username });
   }
 
