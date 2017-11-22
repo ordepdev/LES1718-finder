@@ -3,6 +3,9 @@
   .searchInput:first-child {
   margin-left: 12vw;
   }
+  .icon{
+    width: 1.5% !important;
+  }
 }
 
 @media (max-width: 770px) {
@@ -30,6 +33,16 @@
   .map-container{
     height: 68vh;
     margin-top: 2vh;
+  }
+  .icon{
+    width: 5% !important;
+    padding-left: 2%;
+  }
+  .info{
+    font-size: 1.1em !important;
+  }
+  #historyList{
+    padding: 0;
   }
 }
 
