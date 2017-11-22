@@ -1,5 +1,5 @@
 .sideBar{
-  height: 6vh;
+  height: 7vh;
   width: 100%;
   background-color: rgb(254,254,254);
 }
@@ -10,7 +10,7 @@
 
 
 #login{
-margin-top: 40vh;
+margin-top: 52vh;
 }
 
 
@@ -42,4 +42,12 @@ margin-top: 40vh;
 
 .google-login:hover{
   opacity: 0.8;
+}
+
+.logo{
+  float: right;
+  width: 11vw;
+  min-width: 160px;
+  padding-right: 2vw;
+  padding-top: 10px;
 }
