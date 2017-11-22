@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { slide as Menu } from 'react-burger-menu';
 import Login from '../login/login';
-import { hashHistory } from 'react-router'
+import { hashHistory, Link } from 'react-router'
 
 
 class menu extends Component {
@@ -13,26 +13,24 @@ class menu extends Component {
     }
   }
 
-  showSettings (event) {
-    event.preventDefault();
-  }
-
   callbackUsername = (username) => {
-    this.setState({username: username});
+    console.log(username);
+    this.setState({ username: username });
   }
 
-
-  render () {
+  render() {
     return (
       <Menu>
         <span id="photo"> </span>
         <p id="username" href="/">{this.state.username}</p>
         <a className="menu-item" href="/">Search</a>
         <a className="menu-item" href="">My favorites</a>
-        <a className="menu-item" href="" onClick={() => hashHistory.push('/history')}>Last searches</a>
+        <div className="menu-item">
+          <Link to="/history">Last searches</Link>
+        </div>
         <a className="menu-item" href="">About</a>
         <a className="menu-item" href="">Log out</a>
-        <Login callbackUsername={this.callbackUsername}/>
+        <Login callbackUsername={this.callbackUsername} authentication={this.props.authentication} />
       </Menu>
     );
   }

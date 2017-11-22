@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
+import SideBar from './side-bar/sideBar';
 import MapContainer from './map/mapContainer';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import SideBar from './side-bar/sideBar';
-
 import '../styles/styles.css';
 
 class App extends Component {
@@ -10,8 +9,9 @@ class App extends Component {
     return (
       <MuiThemeProvider>
         <div>
-          <SideBar />
+          <SideBar authentication={this.props.authentication} />
           {this.props.children}
+          <MapContainer />
         </div>
       </MuiThemeProvider>
     );
