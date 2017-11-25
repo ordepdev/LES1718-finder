@@ -5,14 +5,13 @@ import { getRoom, getPath } from '../../utils/communication-manager';
 import { getCookie } from '../../utils/cookie-handler';
 import { SESSION_COOKIE_NAME } from '../../constants/configuration';
 
-
 class Search extends Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-	  currentLocation: "",
+      currentLocation: "",
       searchInput: "",
       inputErrorText: "",
       errorMessage: "",
@@ -30,9 +29,10 @@ class Search extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    
+
     this.props.removeAllLines();
     this.props.clearMarker();
+    
     if (this.state.searchInput === "") {
       this.setState({ inputErrorText: "This field is required." });
     } else {
@@ -49,51 +49,47 @@ class Search extends Component {
 
         this.props.clearMarker();
       });
-		if(this.state.currentLocation !== "" && this.state.searchInput !==""){
-			console.log(this.props);
-			//let pathData = undefined;
-			getPath(this.state.currentLocation, this.state.searchInput, getCookie(SESSION_COOKIE_NAME)).then((pathData) => {
-        let new_coord = pathData.path.map(path => path.coordinate);
-        
-        for(var i = 1; i < new_coord.length; i++)
-        {
-          let ori_coord = new_coord[i-1].split(',');
-          let dest_coord = new_coord[i].split(',');
+      if (this.state.currentLocation !== "" && this.state.searchInput !== "") {
+        console.log(this.props);
+        //let pathData = undefined;
+        getPath(this.state.currentLocation, this.state.searchInput, getCookie(SESSION_COOKIE_NAME)).then((pathData) => {
+          let new_coord = pathData.path.map(path => path.coordinate);
 
-          this.props.createLine (
-            ori_coord[0],ori_coord[1],
-            dest_coord[0], dest_coord[1]
-          );
-        }
+          for (var i = 1; i < new_coord.length; i++) {
+            let ori_coord = new_coord[i - 1].split(',');
+            let dest_coord = new_coord[i].split(',');
 
-			}).catch((error) => {
-				this.setState({
-				  errorData: error.message
-				});
-			});
-		}
-		console.log(this.state.currentLocation);
-		console.log(this.state.searchInput);
+            this.props.createLine(
+              ori_coord[0], ori_coord[1],
+              dest_coord[0], dest_coord[1]
+            );
+          }
+
+        }).catch((error) => {
+          this.setState({
+            errorData: error.message
+          });
+        });
+      }
+      console.log(this.state.currentLocation);
+      console.log(this.state.searchInput);
     }
   }
   showSecond = (e) => {
     e.preventDefault();
-    console.log("sucess");
 
-  this.setState({showSecond: !this.state.showSecond});
-  if(this.state.label === '-'){
+    this.setState({ showSecond: !this.state.showSecond });
+    if (this.state.label === '-') {
       this.setState({
-      label: "+", 
-      currentLocation: ""
-    });
-  }
-  else{
-    this.setState({
-      label: "-" 
-    });
-  }
-
-
+        label: "+",
+        currentLocation: ""
+      });
+    }
+    else {
+      this.setState({
+        label: "-"
+      });
+    }
   }
 
   render() {
@@ -101,18 +97,18 @@ class Search extends Component {
       <div id="searchBar">
 
 
-      {
-        this.state.showSecond &&
-        <TextField
+        {
+          this.state.showSecond &&
+          <TextField
             name="currentLocation"
             value={this.state.currentLocation.toUpperCase()}
-           hintText="current location"
-           // errorText={this.state.errorText}
+            hintText="current location"
+            // errorText={this.state.errorText}
             onChange={this.handleInputChange}
-           className="searchInput"
+            className="searchInput"
 
-         />
-      }
+          />
+        }
         <TextField
           name="searchInput"
           value={this.state.searchInput.toUpperCase()}

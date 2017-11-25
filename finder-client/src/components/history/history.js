@@ -1,24 +1,83 @@
 import React, { Component } from 'react';
+import Dialog from 'material-ui/Dialog';
+import redo from '../../assets/redo.png';
+import { hashHistory } from 'react-router'
+import { HISTORY_PATH, HOME_PATH } from '../../constants/path-names';
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableHeaderColumn,
+  TableRow,
+  TableRowColumn,
+} from 'material-ui/Table';
 
+class History extends Component {
 
-class history extends Component {
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      showDialog: this.props.location.pathname.replace(/\//g, '') === HISTORY_PATH,
+      tableEntries: undefined
+    }
+  }
+
+  handleDialog = (showDialog) => {
+    this.setState({ showDialog: showDialog });
+
+    if (!showDialog) {
+      hashHistory.push(HOME_PATH);
+    }
+  }
+
+  renderTableZone = () => {
+    if (this.state.tableEntries === undefined || this.state.tableEntries.length === 0) {
+      return (
+        <h3>There're no entries in the history to show.</h3>
+      );
+    } else {
+      return (
+        <div>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHeaderColumn>Search Details</TableHeaderColumn>
+                <TableHeaderColumn>Actions</TableHeaderColumn>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {
+                this.state.tableEntries.map((element, index) => {
+                  return (
+                    <TableRow>
+                      <TableRowColumn>from Classroom B021 to Classroom B012</TableRowColumn>
+                      <TableRowColumn><img className="icon" alt="redo" src={redo} /></TableRowColumn>
+                    </TableRow>
+                  );
+                })
+              }
+            </TableBody>
+          </Table>
+        </div>
+      );
+    }
+  }
 
   render() {
     return (
       <div>
-        <h1 className="tittle">Last searches</h1>
-        <div >
-          <ul id="historyList">
-            <li>  <h2 className="info"> from Classroom B021 to Classroom B012 <img className="icon" alt="redo" src="../redo.png" /> </h2> </li>
-            <li>  <h2 className="info"> from Classroom B341 to Classroom B011 <img className="icon" alt="redo" src="./redo.png" /> </h2> </li>
-            <li>  <h2 className="info"> from Classroom B221 to Classroom B023 <img className="icon" alt="redo" src="./redo.png" /> </h2> </li>
-            <li>  <h2 className="info"> from Classroom B218 to Classroom B037 <img className="icon" alt="redo" src="./redo.png" /> </h2> </li>
-          </ul>
-        </div>
+        <Dialog
+          title="Search History"
+          modal={false}
+          open={this.state.showDialog}
+          onRequestClose={() => this.handleDialog(false)}>
+
+          {this.renderTableZone()}
+        </Dialog>
       </div>
     );
   }
 }
 
-export default history;
+export default History;
