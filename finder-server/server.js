@@ -9,12 +9,14 @@ const rooms = require('./routes/rooms');
 const navigation = require("./routes/navigation");
 const authentication = require('./routes/authentication');
 const history = require('./routes/history');
+const favorites= require('./routes/favorites');
 
 server.connection({ port: port, host: host });
 server.start();
 
 server.route(rooms);
 server.route(history);
+server.route(favorites);
 server.route(navigation);
 server.route(authentication);
 
