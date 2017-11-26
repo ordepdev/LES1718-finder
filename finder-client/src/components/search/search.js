@@ -14,6 +14,7 @@ class Search extends Component {
       currentLocation: "",
       searchInput: "",
       inputErrorText: "",
+      currentInputErrorText: "",
       errorMessage: "",
       showSecond: false,
       label: "+"
@@ -23,7 +24,8 @@ class Search extends Component {
   handleInputChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
-      inputErrorText: ""
+      inputErrorText: event.target.name === "searchInput" ? "" : this.state.inputErrorText,
+      currentInputErrorText: event.target.name === "currentLocation" ? "" : this.state.currentInputErrorText
     });
   }
 
@@ -32,26 +34,29 @@ class Search extends Component {
 
     this.props.removeAllLines();
     this.props.clearMarker();
-    
+
     if (this.state.searchInput === "") {
       this.setState({ inputErrorText: "This field is required." });
     } else {
-      getRoom(this.state.searchInput).then((roomData) => {
-        this.setState({
-          errorData: undefined
-        });
-        let coordinates = roomData.coordinates.split(',');
-        this.props.updateMarker(coordinates[0], coordinates[1]);
-      }).catch((error) => {
-        this.setState({
-          errorData: error.message
+
+      if (!this.state.showSecond) {
+
+        getRoom(this.state.searchInput).then((roomData) => {
+          this.setState({
+            errorData: undefined
+          });
+
+          let coordinates = roomData.coordinates.split(',');
+          this.props.updateMarker(coordinates[0], coordinates[1]);
+        }).catch((error) => {
+          this.setState({
+            errorData: error.message
+          });
         });
 
-        this.props.clearMarker();
-      });
-      if (this.state.currentLocation !== "" && this.state.searchInput !== "") {
-        console.log(this.props);
-        //let pathData = undefined;
+      } else if (this.state.currentLocation === "") {
+        this.setState({ currentInputErrorText: "This field is required." });
+      } else {
         getPath(this.state.currentLocation, this.state.searchInput, getCookie(SESSION_COOKIE_NAME)).then((pathData) => {
           let new_coord = pathData.path.map(path => path.coordinate);
 
@@ -71,10 +76,9 @@ class Search extends Component {
           });
         });
       }
-      console.log(this.state.currentLocation);
-      console.log(this.state.searchInput);
     }
   }
+
   showSecond = (e) => {
     e.preventDefault();
 
@@ -96,19 +100,18 @@ class Search extends Component {
     return (
       <div id="searchBar">
 
-
         {
           this.state.showSecond &&
           <TextField
             name="currentLocation"
             value={this.state.currentLocation.toUpperCase()}
             hintText="current location"
-            // errorText={this.state.errorText}
+            errorText={this.state.currentInputErrorText}
             onChange={this.handleInputChange}
             className="searchInput"
-
           />
         }
+
         <TextField
           name="searchInput"
           value={this.state.searchInput.toUpperCase()}
@@ -117,8 +120,10 @@ class Search extends Component {
           onChange={this.handleInputChange}
           className="searchInput"
         />
+
         <RaisedButton label={this.state.label} primary={true} className="navigationButton" onClick={this.showSecond} />
         <RaisedButton label="GO" primary={true} className="searchButton" onClick={this.handleSubmit} />
+
         {
           this.state.errorData !== undefined &&
           <div>

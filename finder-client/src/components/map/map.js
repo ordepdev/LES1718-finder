@@ -107,7 +107,7 @@ class Map extends Component {
    * @param {*} latitude Marker latitude.
    * @param {*} longitude Marker longitude.
    */
-  updateMarker = (longitude, latitude) => {
+  updateMarker = (latitude, longitude) => {
     if (latitude !== undefined && longitude !== undefined) {
       this.clearMarker();
 

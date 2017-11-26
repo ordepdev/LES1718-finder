@@ -12,7 +12,10 @@ class App extends Component {
           <SideBar authentication={this.props.authentication} />
           <MapContainer />
 
-          {this.props.children}
+          {
+            this.props.children !== null &&
+            React.cloneElement(this.props.children, this.props)
+          }
         </div>
       </MuiThemeProvider>
     );
