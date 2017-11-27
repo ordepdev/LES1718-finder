@@ -60,7 +60,7 @@ class Search extends Component {
         getPath(this.state.currentLocation, this.state.searchInput, getCookie(SESSION_COOKIE_NAME)).then((pathData) => {
           let new_coord = pathData.path.map(path => path.coordinate);
 
-          for (var i = 1; i < new_coord.length; i++) {
+          for (let i = 1; i < new_coord.length; i++) {
             let ori_coord = new_coord[i - 1].split(',');
             let dest_coord = new_coord[i].split(',');
 
@@ -82,16 +82,17 @@ class Search extends Component {
   showSecond = (e) => {
     e.preventDefault();
 
-    this.setState({ showSecond: !this.state.showSecond });
     if (this.state.label === '-') {
       this.setState({
         label: "+",
-        currentLocation: ""
+        currentLocation: "",
+        showSecond: !this.state.showSecond
       });
     }
     else {
       this.setState({
-        label: "-"
+        label: "-",
+        showSecond: !this.state.showSecond
       });
     }
   }
