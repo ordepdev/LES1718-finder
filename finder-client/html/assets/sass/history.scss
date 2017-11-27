@@ -13,20 +13,10 @@
   font-family: 'Barlow Semi Condensed', sans-serif;
   weight: 400;
 }
-
-.info{
-
-}
-#historyList{
-  margin-top: 5vh;
-  width: 96vw;
-  text-align: center;
-}
-.icon{
-  width: 1%;
-margin-left: 1%;
-margin-top: 5px;
-  position: absolute;
+.redo {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
 }
 li{
   list-style-type: none;

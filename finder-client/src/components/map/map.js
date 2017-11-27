@@ -88,8 +88,6 @@ class Map extends Component {
     }
   }
 
-
-
   /**
    * Clears the position marker on the map.
    */

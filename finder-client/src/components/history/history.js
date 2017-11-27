@@ -66,7 +66,7 @@ class History extends Component {
     } else {
       return (
         <div>
-          <Table>
+          <Table height="280px">
             <TableHeader displaySelectAll={false} adjustForCheckbox={false} enableSelectAll={false}>
               <TableRow>
                 <TableHeaderColumn>Search Details</TableHeaderColumn>
@@ -79,7 +79,7 @@ class History extends Component {
                   return (
                     <TableRow key={index}>
                       <TableRowColumn>From {element.from} to {element.to}</TableRowColumn>
-                      <TableRowColumn><img className="icon" alt="redo" src={redo} /></TableRowColumn>
+                      <TableRowColumn><img className="redo" alt="redo" src={redo} /></TableRowColumn>
                     </TableRow>
                   );
                 })
