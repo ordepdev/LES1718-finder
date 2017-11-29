@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import Search from '../search/search';
 import { DEFAULT_LATITUDE, DEFAULT_LONGITUDE, DEFAULT_ZOOM_LEVEL } from '../../constants/configuration';
 
-
 class Map extends Component {
 
   constructor(props) {
@@ -13,7 +12,7 @@ class Map extends Component {
       api: undefined,
       map: undefined,
       marker: undefined,
-      path: [],
+      path: []
     }
   }
 
@@ -35,7 +34,7 @@ class Map extends Component {
   loadMap(initialLat = undefined, initialLng = undefined, showMarker = false) {
     if (this.props && this.props.google) {
       const { google } = this.props;
-      this.state.node = ReactDOM.findDOMNode(this.refs.map);
+      const node = ReactDOM.findDOMNode(this.refs.map);
 
       let lat, lng, marker = undefined;
 
@@ -52,19 +51,19 @@ class Map extends Component {
           lat = DEFAULT_LATITUDE;
           lng = DEFAULT_LONGITUDE;
         }
+
       } else {
         lat = initialLat;
         lng = initialLng;
       }
-	lng = -8.5956712;
-	lat = 41.1773283;
+
       const center = new google.maps.LatLng(lat, lng);
       const mapConfig = Object.assign({}, {
         center: center,
         zoom: DEFAULT_ZOOM_LEVEL
       });
 
-      this.map = new google.maps.Map(this.state.node, mapConfig);
+      this.map = new google.maps.Map(node, mapConfig);
 
       if (showMarker) {
         marker = new google.maps.Marker({
@@ -88,8 +87,6 @@ class Map extends Component {
       });
     }
   }
-  
- 
 
   /**
    * Clears the position marker on the map.
@@ -108,58 +105,72 @@ class Map extends Component {
    * @param {*} latitude Marker latitude.
    * @param {*} longitude Marker longitude.
    */
-  updateMarker = (longitude, latitude) => {
+  updateMarker = (latitude, longitude) => {
     if (latitude !== undefined && longitude !== undefined) {
       this.clearMarker();
 
+      let latLng = { lat: parseFloat(latitude), lng: parseFloat(longitude) };
+
+      let map_copy = this.state.map;
+      map_copy.setCenter(latLng);
+
       let newMarker = new this.state.api.maps.Marker({
-        position: { lat: parseFloat(latitude), lng: parseFloat(longitude) },
-        map: this.state.map
+        position: latLng,
+        map: map_copy
       });
-	  
-      this.setState({ marker: newMarker });
+
+      this.setState({ 
+        marker: newMarker,
+        map: map_copy
+      });
     }
   }
 
-removeAllLines = () => {
-  if(this.state.path.length > 0 )
-  {
-    console.log(this.state.path.length);
-    
-    this.state.path.forEach(function(element) {
-      element.setMap(null);
-    }, this);
-    this.setState({
-      path: []
-    });
+  /**
+   * Removes all the path lines drawn.
+   */
+  removeAllLines = () => {
+    if (this.state.path.length > 0) {
+      let existingpath = this.state.path;
+
+      existingpath.forEach(function (element) {
+        element.setMap(null);
+      }, this);
+
+      this.setState({
+        path: []
+      });
+    }
   }
-}  
-  
-createLine = (latLoc, lngLoc, latDst, lngDst) => {
-	if (latLoc !== undefined && lngLoc !== undefined && latDst !== undefined && lngDst !== undefined) {
-    //map.clear();
 
-    var copy_map = this.state.map;
+  /**
+   * Create a polygon line between two points.
+   */
+  createLine = (latLoc, lngLoc, latDst, lngDst) => {
+    if (latLoc !== undefined && lngLoc !== undefined && latDst !== undefined && lngDst !== undefined) {
+      let map_copy = this.state.map;
+      let api_copy = this.state.api;
+      let path = this.state.path;
 
-	  let line = new this.state.api.maps.Polyline({
-			path: [
-				new this.state.api.maps.LatLng(latLoc, lngLoc), 
-				new this.state.api.maps.LatLng(latDst, lngDst)
-			],
-			strokeColor: "#000000",
-			strokeOpacity: 1.0,
-			strokeWeight: 4,
-			map: copy_map
-    });
-    this.state.path.push(line);
-    this.setState({ 
-      map: copy_map
-      //path: line 
-    });
+      let line = new api_copy.maps.Polyline({
+        path: [
+          new api_copy.maps.LatLng(latLoc, lngLoc),
+          new api_copy.maps.LatLng(latDst, lngDst)
+        ],
+        strokeColor: "#000000",
+        strokeOpacity: 1.0,
+        strokeWeight: 4,
+        map: map_copy
+      });
 
-
-	}
-}
+      path.push(line);
+      this.setState({
+        map: map_copy,
+        path: path,
+        api: api_copy
+      });
+    }
+  }
 
   render() {
     return (
@@ -169,10 +180,10 @@ createLine = (latLoc, lngLoc, latDst, lngDst) => {
         </div>
         <Search
           updateMarker={this.updateMarker}
-          clearMarker={this.clearMarker} 
+          clearMarker={this.clearMarker}
           createLine={this.createLine}
           removeAllLines={this.removeAllLines}
-		  />
+        />
 
       </div>
     );

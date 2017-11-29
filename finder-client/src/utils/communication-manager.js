@@ -1,5 +1,3 @@
-import { SERVER_ENDPOINT_URL } from '../constants/configuration';
-
 /**
  * Requests a shortest Path .
  * @param [*] rooms POI name.
@@ -8,7 +6,6 @@ export function getPath(local, destination, secret) {
 	return new Promise(function (resolve, reject) {
 
 		let requestUrl = "/navigation/from/" + local + "/to/" + destination;
-		console.log(requestUrl);
 		let requestOptions = {
 			uri: requestUrl,
 			method: "GET",
@@ -86,6 +83,48 @@ export function getRoom(room) {
 }
 
 /**
+ * Request user search history.
+ * @param {*} secret User's secret.
+ */
+export function getHistory(secret) {
+	return new Promise(function (resolve, reject) {
+
+		let requestUrl = "/history";
+		let requestOptions = {
+			uri: requestUrl,
+			method: "GET",
+			headers: {
+				'Authorization': 'Basic ' + secret,
+				'Content-Type': 'application/json',
+				'pragma': 'no-cache',
+				'cache-control': 'no-cache'
+			}
+		}
+
+		fetch(requestUrl, requestOptions).then(function (response) {
+			if (response.status === 200) {
+				return resolve(response.json());
+			} else {
+				let errorMessage = "";
+
+				switch (response.status) {
+					case 404:
+						errorMessage = "No search entries found."
+						break;
+					default:
+						errorMessage = "An error has occurred! Please try again."
+						break;
+				}
+
+				return reject(Error(errorMessage));
+			}
+		}, function (error) {
+			return reject(error);
+		});
+	});
+}
+
+/**
  * Gets the authentication info.
  * @param {*} secret Secret (access token) used to authenticate the user.
  */
@@ -135,7 +174,7 @@ export function authenticateUser(userID, provider) {
 				'pragma': 'no-cache',
 				'cache-control': 'no-cache'
 			},
-			body: JSON.stringify({ "userID": userID, "provider": provider})
+			body: JSON.stringify({ "userID": userID, "provider": provider })
 		}
 
 		fetch(requestUrl, requestOptions).then(function (response) {

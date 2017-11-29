@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow+Condensed:400,500,600');
+
+
+.tittle{
+  color: rgb(151,41,42);
+  font-size: 1.8em;
+  text-align: center;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  weight: 600;
+}
+.info{
+  font-size: 1.3em;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  weight: 400;
+}
+.redo {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+li{
+  list-style-type: none;
+}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { slide as Menu } from 'react-burger-menu';
 import Login from '../login/login';
-
+import { Link } from 'react-router'
 
 class menu extends Component {
   constructor(props) {
@@ -21,13 +21,16 @@ class menu extends Component {
     return (
       <Menu>
         <span id="photo"> </span>
-        <p id="username" href="/">{this.state.username}</p>
-        <a className="menu-item" href="/">Search</a>
-        <a className="menu-item" href="/contact">Navigation</a>
-        <a className="menu-item" href="/contact">My favorites</a>
-        <a className="menu-item" href="/contact">Last searches</a>
-        <a className="menu-item" href="/about">About</a>
-        <a className="menu-item" href="/about">Log out</a>
+        <p id="username">{this.state.username}</p>
+        <div className="menu-item">
+          <Link to="favorites">My favorites</Link>
+        </div>
+        <div className="menu-item">
+          <Link to="history">Last searches</Link>
+        </div>
+        <div className="menu-item">
+          <Link to="about">About</Link>
+        </div>
         <Login callbackUsername={this.callbackUsername} authentication={this.props.authentication} />
       </Menu>
     );

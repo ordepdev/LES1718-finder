@@ -6,7 +6,9 @@ import { GOOGLE_MAPS_API_KEY } from '../../constants/configuration';
 export class MapContainer extends React.Component {
     render() {
         return (
-            <Map google={this.props.google} />
+            <div>
+                <Map google={this.props.google} />
+            </div>
         );
     }
 }
