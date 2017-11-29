@@ -23,9 +23,6 @@ class menu extends Component {
         <span id="photo"> </span>
         <p id="username">{this.state.username}</p>
         <div className="menu-item">
-          <Link to="/">Search</Link>
-        </div>
-        <div className="menu-item">
           <Link to="favorites">My favorites</Link>
         </div>
         <div className="menu-item">
