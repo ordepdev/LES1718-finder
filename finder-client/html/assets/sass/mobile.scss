@@ -49,15 +49,15 @@
 // height
 @media (max-height: 730px) {
   #login{
-    margin-top: 30vh;
+    margin-top: 40vh;
   }
 
 }
-@media (max-height: 630px) {
+@media (max-height: 670px) {
   #login{
-    margin-top: 16vh;
+    margin-top: 50vh;
   }
   .my-facebook-button-class, .google-login{
-    height: 6vh;
+    height: 5vh;
   }
 }

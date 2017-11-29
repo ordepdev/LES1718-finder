@@ -20,8 +20,6 @@ class menu extends Component {
   render() {
     return (
       <Menu>
-        <span id="photo"> </span>
-        <p id="username">{this.state.username}</p>
         <div className="menu-item">
           <Link to="favorites">My favorites</Link>
         </div>

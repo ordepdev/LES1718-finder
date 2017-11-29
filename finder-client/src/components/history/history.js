@@ -61,7 +61,7 @@ class History extends Component {
   renderTableZone = () => {
     if (this.state.tableEntries === undefined || this.state.tableEntries.length === 0) {
       return (
-        <h3>There're no entries in the history to show.</h3>
+        <h2>There are no entries in the history to show.</h2>
       );
     } else {
       return (
@@ -96,10 +96,10 @@ class History extends Component {
       <div>
         <Dialog
           title="Search History"
+          className = "dialog"
           modal={false}
           open={this.state.showDialog}
           onRequestClose={() => this.handleDialog(false)}>
-
           {this.renderTableZone()}
         </Dialog>
       </div>
