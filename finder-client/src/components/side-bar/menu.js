@@ -20,6 +20,7 @@ class menu extends Component {
   render() {
     return (
       <Menu>
+      
         <div className="menu-item">
           <Link to="favorites">My favorites</Link>
         </div>

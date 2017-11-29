@@ -1,16 +1,31 @@
 
 @media (max-width: 1072px) {
   .searchInput:first-child {
-  margin-left: 12vw;
+  margin-left: 10vw;
   }
   .icon{
     width: 1.5% !important;
   }
 }
 
-@media (max-width: 770px) {
+@media (max-width: 750px) {
+  .searchInput:first-child {
+    margin-top: 2vw;
+    margin-left: 30vw;
+  }
+  .searchInput {
+    margin-left: 30vw;
+  }
   .searchButton {
-    margin-left: 42vw;
+    margin-left: 4vw;
+  }
+  .navigationButton{
+    margin-left: 37vw;
+  }
+  .navigationButton span{
+    float: right;
+    margin-top: 3vw !important;
+
   }
 
 }
@@ -21,14 +36,36 @@
     margin-left: 10vw;
   }
 }
-
-@media (max-width: 400px) {
+@media (max-width: 650px) {
   .searchInput:first-child {
     margin-top: 2vw;
-    margin-left: 10vw;
+    margin-left: 30vw;
+  }
+  .searchInput {
+    margin-left: 30vw;
   }
   .searchButton {
-    margin-left: 36vw;
+    margin-left: 4vw;
+  }
+  .navigationButton{
+    margin-left: 40vw;
+  }
+  .navigationButton span{
+    float: right;
+    margin-top: 3vw !important;
+  }
+}
+
+@media (max-width: 415px) {
+  .searchInput:first-child {
+    margin-top: 2vw;
+    margin-left: 17vw;
+  }
+  .searchInput {
+    margin-left: 17vw;
+  }
+  .searchButton {
+    margin-left: 4vw;
   }
   .map-container{
     height: 68vh;
@@ -41,21 +78,32 @@
   .info{
     font-size: 1.1em !important;
   }
-  #historyList{
-    padding: 0;
+  .navigationButton{
+    margin-left: 34vw;
+  }
+  .navigationButton span{
+    float: right;
+    margin-top: 3vw !important;
+  }
+  td:first-child{
+    padding: 0px !important;
   }
 }
 
 // height
-@media (max-height: 730px) {
+@media (max-height: 737px) {
   #login{
-    margin-top: 40vh;
+    margin-top: 60vh;
   }
-
+  .map {
+      &-container {
+          height: 68vh;
+      }
+  }
 }
 @media (max-height: 670px) {
   #login{
-    margin-top: 50vh;
+    margin-top: 60vh;
   }
   .my-facebook-button-class, .google-login{
     height: 5vh;
