@@ -124,6 +124,50 @@ export function getHistory(secret) {
 	});
 }
 
+
+/**
+ * Request user search favorites.
+ * @param {*} secret User's secret.
+ */
+export function getFavorites(secret) {
+	return new Promise(function (resolve, reject) {
+
+		let requestUrl = "/favorites";
+		let requestOptions = {
+			uri: requestUrl,
+			method: "GET",
+			headers: {
+				'Authorization': 'Basic ' + secret,
+				'Content-Type': 'application/json',
+				'pragma': 'no-cache',
+				'cache-control': 'no-cache'
+			}
+		}
+
+		fetch(requestUrl, requestOptions).then(function (response) {
+			if (response.status === 200) {
+				return resolve(response.json());
+			} else {
+				let errorMessage = "";
+
+				switch (response.status) {
+					case 404:
+						errorMessage = "No favorites found."
+						break;
+					default:
+						errorMessage = "An error has occurred! Please try again."
+						break;
+				}
+
+				return reject(Error(errorMessage));
+			}
+		}, function (error) {
+			return reject(error);
+		});
+	});
+}
+
+
 /**
  * Gets the authentication info.
  * @param {*} secret Secret (access token) used to authenticate the user.
