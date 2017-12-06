@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
+import fav from '../../assets/fav.png';
 import RaisedButton from 'material-ui/RaisedButton';
-import { getRoom, getPath } from '../../utils/communication-manager';
+import { getRoom, getPath, getAuthInfo } from '../../utils/communication-manager';
 import { getCookie } from '../../utils/cookie-handler';
 import { SESSION_COOKIE_NAME } from '../../constants/configuration';
+import { updateAuthInfo } from '../../utils/authentication';
 
 class Search extends Component {
 
@@ -17,9 +19,18 @@ class Search extends Component {
       currentInputErrorText: "",
       errorMessage: "",
       showSecond: false,
+      showFav: false,
       label: "+"
     }
   }
+  // componentWillMount() {
+  //   console.log("favoriteButton");
+  //   if (this.props.authentication.isLoggedIn) {
+  //     this.setState({
+  //       showFav: true
+  //     });
+  //   }
+  // }
 
   handleInputChange = (event) => {
     this.setState({
@@ -123,8 +134,8 @@ class Search extends Component {
         />
 
         <RaisedButton label={this.state.label} primary={true} className="navigationButton" onClick={this.showSecond} />
+        <img className="fav" alt="fav" src={fav} />
         <RaisedButton label="GO" primary={true} className="searchButton" onClick={this.handleSubmit} />
-
         {
           this.state.errorData !== undefined &&
           <div>
