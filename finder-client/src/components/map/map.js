@@ -119,7 +119,7 @@ class Map extends Component {
         map: map_copy
       });
 
-      this.setState({ 
+      this.setState({
         marker: newMarker,
         map: map_copy
       });
@@ -183,6 +183,7 @@ class Map extends Component {
           clearMarker={this.clearMarker}
           createLine={this.createLine}
           removeAllLines={this.removeAllLines}
+          authentication={this.props.authentication}
         />
 
       </div>

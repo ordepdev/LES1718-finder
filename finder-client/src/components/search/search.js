@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import fav from '../../assets/fav.png';
+import favAdd from '../../assets/favAdd.png';
 import RaisedButton from 'material-ui/RaisedButton';
 import { getRoom, getPath, getAuthInfo } from '../../utils/communication-manager';
 import { getCookie } from '../../utils/cookie-handler';
@@ -21,16 +22,21 @@ class Search extends Component {
       showSecond: false,
       showFav: false,
       label: "+"
+      }
+  }
+  componentWillReceiveProps(nextProps) {
+    console.log("favoriteButton");
+    if (nextProps.authentication.isLoggedIn) {
+      this.setState({
+        showFav: true
+      });
+    }
+    else {
+      this.setState({
+        showFav: false
+      });
     }
   }
-  // componentWillMount() {
-  //   console.log("favoriteButton");
-  //   if (this.props.authentication.isLoggedIn) {
-  //     this.setState({
-  //       showFav: true
-  //     });
-  //   }
-  // }
 
   handleInputChange = (event) => {
     this.setState({
@@ -107,6 +113,10 @@ class Search extends Component {
       });
     }
   }
+  addFav = (e) => {
+    e.preventDefault();
+
+  }
 
   render() {
     return (
@@ -134,7 +144,10 @@ class Search extends Component {
         />
 
         <RaisedButton label={this.state.label} primary={true} className="navigationButton" onClick={this.showSecond} />
-        <img className="fav" alt="fav" src={fav} />
+        {
+          this.state.showFav &&
+            <img className="fav" alt="fav" src={fav} onClick={this.addFav}/>
+        }
         <RaisedButton label="GO" primary={true} className="searchButton" onClick={this.handleSubmit} />
         {
           this.state.errorData !== undefined &&
