@@ -7,7 +7,7 @@ export class MapContainer extends React.Component {
     render() {
         return (
             <div>
-                <Map google={this.props.google} />
+                <Map google={this.props.google} authentication={this.props.authentication}/>
             </div>
         );
     }

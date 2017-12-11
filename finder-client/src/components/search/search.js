@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
+import fav from '../../assets/fav.png';
+import favAdd from '../../assets/favAdd.png';
 import RaisedButton from 'material-ui/RaisedButton';
-import { getRoom, getPath } from '../../utils/communication-manager';
+import { getRoom, getPath, getAuthInfo, checkFavorites, addFavorite, removeFavorite }
+  from '../../utils/communication-manager';
 import { getCookie } from '../../utils/cookie-handler';
 import { SESSION_COOKIE_NAME } from '../../constants/configuration';
+import { updateAuthInfo } from '../../utils/authentication';
 
 class Search extends Component {
 
@@ -17,7 +21,22 @@ class Search extends Component {
       currentInputErrorText: "",
       errorMessage: "",
       showSecond: false,
+      showFav: false,
+      showFavAdd: false,
       label: "+"
+      }
+  }
+  componentWillReceiveProps(nextProps) {
+    console.log("favoriteButton");
+    if (nextProps.authentication.isLoggedIn) {
+      this.setState({
+        showFav: true
+      });
+    }
+    else {
+      this.setState({
+        showFav: false
+      });
     }
   }
 
@@ -48,6 +67,21 @@ class Search extends Component {
 
           let coordinates = roomData.coordinates.split(',');
           this.props.updateMarker(coordinates[0], coordinates[1]);
+
+          checkFavorites(getCookie(SESSION_COOKIE_NAME)).then((response) => {
+            console.log(response);
+            if (!response.length) {
+              return;
+            }
+            console.log(roomData);
+            if (response.map(f => f.code).indexOf(roomData.name) >= 0) {
+              this.setState({ showFavAdd: true });
+            }
+          }).catch((error) => {
+            this.setState({
+              errorData: error.message
+            });
+          });
         }).catch((error) => {
           this.setState({
             errorData: error.message
@@ -86,15 +120,41 @@ class Search extends Component {
       this.setState({
         label: "+",
         currentLocation: "",
-        showSecond: !this.state.showSecond
+        showSecond: !this.state.showSecond,
+        showFav: true
       });
     }
     else {
       this.setState({
         label: "-",
-        showSecond: !this.state.showSecond
+        showSecond: !this.state.showSecond,
+        showFav: false
       });
     }
+  }
+  addFav = (e) => {
+    e.preventDefault();
+
+    addFavorite(this.state.searchInput, getCookie(SESSION_COOKIE_NAME))
+    .then((response) => {
+      this.setState({ showFavAdd: true });
+    }).catch((error) => {
+      this.setState({
+        errorData: error.message
+      });
+    });
+  }
+  removeFav = (e) => {
+    e.preventDefault();
+
+    removeFavorite(this.state.searchInput, getCookie(SESSION_COOKIE_NAME))
+    .then((response) => {
+      this.setState({ showFavAdd: false });
+    }).catch((error) => {
+      this.setState({
+        errorData: error.message
+      });
+    });
   }
 
   render() {
@@ -123,8 +183,12 @@ class Search extends Component {
         />
 
         <RaisedButton label={this.state.label} primary={true} className="navigationButton" onClick={this.showSecond} />
+        {
+          this.state.showFav && <img className="fav" alt="fav"
+            src={this.state.showFav ? this.state.showFavAdd ? favAdd : fav : ''}
+            onClick={this.state.showFav ? this.state.showFavAdd ? this.removeFav : this.addFav : ''} />
+        }
         <RaisedButton label="GO" primary={true} className="searchButton" onClick={this.handleSubmit} />
-
         {
           this.state.errorData !== undefined &&
           <div>

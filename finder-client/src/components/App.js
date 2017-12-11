@@ -10,7 +10,7 @@ class App extends Component {
       <MuiThemeProvider>
         <div>
           <SideBar authentication={this.props.authentication} />
-          <MapContainer />
+          <MapContainer authentication={this.props.authentication} />
 
           {
             this.props.children !== null &&
