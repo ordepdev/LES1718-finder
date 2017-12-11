@@ -232,3 +232,97 @@ export function authenticateUser(userID, provider) {
 		});
 	});
 }
+
+/**
+ * 
+ * @param {*} secret Secret (access token) used to authenticate the user.
+ */
+export function checkFavorites(secret) {
+	return new Promise(function (resolve, reject) {
+
+		let requestUrl = "/favorites";
+
+		let requestOptions = {
+			uri: requestUrl,
+			method: "GET",
+			headers: {
+				'Authorization': 'Basic ' + secret,
+				'Content-Type': 'application/json',
+				'pragma': 'no-cache',
+				'cache-control': 'no-cache'
+			}
+		}
+
+		fetch(requestUrl, requestOptions).then(function (response) {
+			if (response.status === 200) {
+				return resolve(response.json());
+			}
+		}, function (error) {
+			return reject(error);
+		});
+	});
+}
+
+/**
+ * 
+ * @param {*} room POI name.
+ * @param {*} secret Secret (access token) used to authenticate the user.
+ */
+export function addFavorite(room, secret) {
+	return new Promise(function (resolve, reject) {
+
+		let requestUrl = "/favorites/" + room;
+
+		let requestOptions = {
+			uri: requestUrl,
+			method: "POST",
+			headers: {
+				'Authorization': 'Basic ' + secret,
+				'Content-Type': 'application/json',
+				'pragma': 'no-cache',
+				'cache-control': 'no-cache'
+			}
+		}
+
+		fetch(requestUrl, requestOptions).then(function (response) {
+			if (response.status === 201) {
+				return resolve(response.json());
+			}
+			return reject(Error("An error has occurred! Please try again."));
+		}, function (error) {
+			return reject(error);
+		});
+	});
+}
+
+/**
+ * 
+ * @param {*} room POI name.
+ * @param {*} secret Secret (access token) used to authenticate the user.
+ */
+export function removeFavorite(room, secret) {
+	return new Promise(function (resolve, reject) {
+
+		let requestUrl = "/favorites/" + room;
+
+		let requestOptions = {
+			uri: requestUrl,
+			method: "DELETE",
+			headers: {
+				'Authorization': 'Basic ' + secret,
+				'Content-Type': 'application/json',
+				'pragma': 'no-cache',
+				'cache-control': 'no-cache'
+			}
+		}
+
+		fetch(requestUrl, requestOptions).then(function (response) {
+			if (response.status === 204) {
+				return resolve("");
+			}
+			return reject(Error("An error has occurred! Please try again."));
+		}, function (error) {
+			return reject(error);
+		});
+	});
+}
