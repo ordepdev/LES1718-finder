@@ -1,12 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Barlow+Condensed:400,500,600');
 
 
-.tittle{
-  color: rgb(151,41,42);
+.dialog h3{
+  color: rgb(151,41,42) !important;
   font-size: 1.8em;
-  text-align: center;
   font-family: 'Barlow Semi Condensed', sans-serif;
-  weight: 600;
+  font-weight: 600;
+}
+.dialog h2{
+  font-size: 1.3em;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  font-weight: 400;
 }
 .info{
   font-size: 1.3em;
