@@ -1,9 +1,4 @@
 import React, { Component } from 'react';
-<<<<<<< Updated upstream
-import redo from '../../assets/redo.png';
-
-class Favorites extends Component {
-=======
 import Dialog from 'material-ui/Dialog';
 import fav from '../../assets/favAdd.png';
 import { hashHistory } from 'react-router'
@@ -21,7 +16,6 @@ import {
 } from 'material-ui/Table';
 
 class Favorites extends Component {
-
   constructor(props) {
     super(props);
 
@@ -81,6 +75,7 @@ renderTableZone = () => {
                     <TableRow key={index}>
                       <TableRowColumn>Room {element.code}</TableRowColumn>
                       <TableRowColumn><img className="fav" alt="fav" src={fav} /></TableRowColumn>
+
                     </TableRow>
                   );
                 })
@@ -92,14 +87,17 @@ renderTableZone = () => {
     }
   }
 
->>>>>>> Stashed changes
   render() {
     return (
       <div>
-        <h1 className="tittle">My favorites</h1>
-        <ul id="historyList">
-          <li>Entrada na lista<img className="icon" alt="redo" src={redo} /></li>
-        </ul>
+        <Dialog
+          title="My Favorites"
+          modal={false}
+          open={this.state.showDialog}
+          onRequestClose={() => this.handleDialog(false)}>
+
+          {this.renderTableZone()}
+        </Dialog>
       </div>
     );
   }
