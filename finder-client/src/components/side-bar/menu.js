@@ -17,6 +17,8 @@ class menu extends Component {
     this.setState({ username: username });
   }
 
+
+
   render() {
     return (
       <Menu>
