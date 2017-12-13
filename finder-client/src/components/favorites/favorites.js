@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Dialog from 'material-ui/Dialog';
-import heart from '../../assets/heart.png';
+import fav from '../../assets/favAdd.png';
 import { hashHistory } from 'react-router'
 import { getFavorites } from '../../utils/communication-manager';
 import { SESSION_COOKIE_NAME } from '../../constants/configuration';
@@ -16,7 +16,6 @@ import {
 } from 'material-ui/Table';
 
 class Favorites extends Component {
- 
   constructor(props) {
     super(props);
 
@@ -75,7 +74,8 @@ renderTableZone = () => {
                   return (
                     <TableRow key={index}>
                       <TableRowColumn>Room {element.code}</TableRowColumn>
-                      <TableRowColumn><img className="heart" alt="heart" src={heart} /></TableRowColumn>
+                      <TableRowColumn><img className="fav" alt="fav" src={fav} /></TableRowColumn>
+
                     </TableRow>
                   );
                 })

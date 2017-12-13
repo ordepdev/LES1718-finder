@@ -178,7 +178,7 @@ class Map extends Component {
         marker = this.state.marker;
       }
 
-      new google.maps.KmlLayer("https://gist.githubusercontent.com/RicardoAlmeida25/c9defb562055597eee62d430db656189/raw/64a44c37dec1b6febc3d0aef864c32fd45114f57/feup_prok.kml", {
+      new google.maps.KmlLayer("https://raw.githubusercontent.com/tiagoCMatias/feupKML/a03fdf242d68e627b11a4fcb0aa890ed22ae2693/KML", {
         suppressInfoWindows: false,
         preserveViewport: true,
         map: this.map

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import History from './components/history/history';
 import Favorites from './components/favorites/favorites';
+import About from './components/about/about';
 import store from './store/store';
 import AppContainer from './components/App-container';
 import { Provider } from 'react-redux'
@@ -14,6 +15,7 @@ ReactDOM.render(
             <Route path="/" component={AppContainer}>
                 <Route path='history' component={History} />
                 <Route path='favorites' component={Favorites} />
+                <Route path='about' component={About}/>
             </Route>
         </Router>
     </Provider>
